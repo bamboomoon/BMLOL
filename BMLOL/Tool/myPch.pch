@@ -1,0 +1,31 @@
+//
+//  myPch.pch
+//  BMLOL
+//
+//  Created by donglei on 3/1/16.
+//  Copyright © 2016 donglei. All rights reserved.
+//
+
+#ifndef myPch_pch
+#define myPch_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef __OBJC__
+//导入 masonry
+#import <Masonry/Masonry.h>
+//屏幕的宽度
+#define screenWidth [UIScreen mainScreen].bounds.size.width
+
+#define screenHeight  [UIScreen mainScreen].bounds.size.height
+
+#ifdef __DEBUY__
+#define BMLog(...) NSLog(__VA_ARGS__)
+#else 
+#define BMLog(...)
+#endif
+
+
+#endif
+
+#endif /* myPch_pch */

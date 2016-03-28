@@ -10,4 +10,8 @@
 
 @interface BMNewsPhoneModel : NSObject
 
+@property(nonatomic,copy) NSString *newsId;  //newId->id
+@property(nonatomic,copy) NSString *specil;
+@property(nonatomic,copy) NSString *url;
+@property(nonatomic,copy) NSString *name;
 @end

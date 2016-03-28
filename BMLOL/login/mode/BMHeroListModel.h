@@ -4,6 +4,7 @@
 //
 //  Created by donglei on 3/20/16.
 //  Copyright © 2016 donglei. All rights reserved.
+//  这是 hero 的一些信息
 //
 
 #import <Foundation/Foundation.h>

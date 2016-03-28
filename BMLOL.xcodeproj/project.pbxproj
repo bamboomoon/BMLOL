@@ -11,6 +11,10 @@
 		4F5BDA151C9133C300020DB3 /* BMCustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BDA141C9133C300020DB3 /* BMCustomTextField.m */; };
 		4FAA91ED1C9EEEC80043A2AF /* BMHeroListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA91EC1C9EEEC80043A2AF /* BMHeroListModel.m */; };
 		4FD056FF1C8F1C6600286B4D /* BMOtherLoginVc.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD056FE1C8F1C6600286B4D /* BMOtherLoginVc.m */; };
+		4FD5BEA51CA7063500B10EC2 /* BMNetworing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5BEA41CA7063500B10EC2 /* BMNetworing.m */; };
+		4FD5BEAA1CA82DD700B10EC2 /* BMPackageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5BEA91CA82DD700B10EC2 /* BMPackageInfo.m */; };
+		4FD5BEAD1CA830B400B10EC2 /* BMNewsPhoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5BEAC1CA830B400B10EC2 /* BMNewsPhoneModel.m */; };
+		4FD5BEB01CA8333C00B10EC2 /* BMNewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5BEAF1CA8333C00B10EC2 /* BMNewVC.m */; };
 		4FDD08F61C8B5A5A00139EE6 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDD08F51C8B5A5A00139EE6 /* Reveal.framework */; };
 		4FDD08FD1C8C127800139EE6 /* BMLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDD08FC1C8C127800139EE6 /* BMLaunchViewController.m */; };
 		4FDD08FF1C8C6E5C00139EE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FDD08FE1C8C6E5C00139EE6 /* Assets.xcassets */; };
@@ -43,6 +47,14 @@
 		4FB61C011C85219D00503942 /* myPch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myPch.pch; sourceTree = "<group>"; };
 		4FD056FD1C8F1C6600286B4D /* BMOtherLoginVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMOtherLoginVc.h; sourceTree = "<group>"; };
 		4FD056FE1C8F1C6600286B4D /* BMOtherLoginVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMOtherLoginVc.m; sourceTree = "<group>"; };
+		4FD5BEA31CA7063500B10EC2 /* BMNetworing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMNetworing.h; sourceTree = "<group>"; };
+		4FD5BEA41CA7063500B10EC2 /* BMNetworing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMNetworing.m; sourceTree = "<group>"; };
+		4FD5BEA81CA82DD700B10EC2 /* BMPackageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPackageInfo.h; sourceTree = "<group>"; };
+		4FD5BEA91CA82DD700B10EC2 /* BMPackageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMPackageInfo.m; sourceTree = "<group>"; };
+		4FD5BEAB1CA830B400B10EC2 /* BMNewsPhoneModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMNewsPhoneModel.h; sourceTree = "<group>"; };
+		4FD5BEAC1CA830B400B10EC2 /* BMNewsPhoneModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMNewsPhoneModel.m; sourceTree = "<group>"; };
+		4FD5BEAE1CA8333C00B10EC2 /* BMNewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMNewVC.h; sourceTree = "<group>"; };
+		4FD5BEAF1CA8333C00B10EC2 /* BMNewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMNewVC.m; sourceTree = "<group>"; };
 		4FDD08F51C8B5A5A00139EE6 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		4FDD08FB1C8C127800139EE6 /* BMLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMLaunchViewController.h; sourceTree = "<group>"; };
 		4FDD08FC1C8C127800139EE6 /* BMLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMLaunchViewController.m; sourceTree = "<group>"; };
@@ -128,6 +140,8 @@
 			children = (
 				4FAA91EB1C9EEEC80043A2AF /* BMHeroListModel.h */,
 				4FAA91EC1C9EEEC80043A2AF /* BMHeroListModel.m */,
+				4FD5BEA81CA82DD700B10EC2 /* BMPackageInfo.h */,
+				4FD5BEA91CA82DD700B10EC2 /* BMPackageInfo.m */,
 			);
 			path = mode;
 			sourceTree = "<group>";
@@ -203,6 +217,8 @@
 			isa = PBXGroup;
 			children = (
 				4FB61C011C85219D00503942 /* myPch.pch */,
+				4FD5BEA31CA7063500B10EC2 /* BMNetworing.h */,
+				4FD5BEA41CA7063500B10EC2 /* BMNetworing.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -313,6 +329,8 @@
 		4FFB2BA21C814A8F00395FC3 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				4FD5BEAE1CA8333C00B10EC2 /* BMNewVC.h */,
+				4FD5BEAF1CA8333C00B10EC2 /* BMNewVC.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -320,6 +338,8 @@
 		4FFB2BA31C814A8F00395FC3 /* mode */ = {
 			isa = PBXGroup;
 			children = (
+				4FD5BEAB1CA830B400B10EC2 /* BMNewsPhoneModel.h */,
+				4FD5BEAC1CA830B400B10EC2 /* BMNewsPhoneModel.m */,
 			);
 			path = mode;
 			sourceTree = "<group>";
@@ -495,12 +515,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FFB2B741C7C4D2A00395FC3 /* AppDelegate.m in Sources */,
+				4FD5BEAD1CA830B400B10EC2 /* BMNewsPhoneModel.m in Sources */,
 				4FFB2B711C7C4D2A00395FC3 /* main.m in Sources */,
 				4FD056FF1C8F1C6600286B4D /* BMOtherLoginVc.m in Sources */,
+				4FD5BEA51CA7063500B10EC2 /* BMNetworing.m in Sources */,
 				4FFB2BAE1C81836900395FC3 /* BMTabBarBtn.m in Sources */,
+				4FD5BEAA1CA82DD700B10EC2 /* BMPackageInfo.m in Sources */,
 				4FFB2BAB1C814C8600395FC3 /* BMCustomTabBarController.m in Sources */,
 				4F5BDA151C9133C300020DB3 /* BMCustomTextField.m in Sources */,
 				4FAA91ED1C9EEEC80043A2AF /* BMHeroListModel.m in Sources */,
+				4FD5BEB01CA8333C00B10EC2 /* BMNewVC.m in Sources */,
 				4FDD08FD1C8C127800139EE6 /* BMLaunchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

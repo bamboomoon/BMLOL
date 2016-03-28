@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "BMNetworing.h"
 
 @interface AppDelegate ()
 
@@ -18,18 +19,15 @@
 //应用程序完成启动
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    //在这里去加载 herolist  和 heroinfo
-    NSLog(@"ssss");
-    NSURLSession *getHeroList = [NSURLSession sharedSession];
- NSURLSessionDataTask *data = [getHeroList dataTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://ossweb-img.qq.com/upload/qqtalk/lol_hero/hero_list.js"]] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-   NSDictionary * d  =   [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-     
-        NSLog(@"%@--%@  name:%d",d,response,[NSThread currentThread].isMainThread);
-    
-    }];
 
-    [data resume];
+    //设置 navigation 的主题
+    UINavigationBar *mainNaviBar = [UINavigationBar  appearance];
+    [mainNaviBar setBackgroundImage:[UIImage imageNamed:@"nav_bar_bg_for_seven"] forBarMetrics:UIBarMetricsDefault];
+    
+    
+    [BMNetworing BMNetworingWithUrlString:@"http://ossweb-img.qq.com/upload/qqtalk/lol_hero/hero_list.js" commple:^(NSArray *jsonData) {
+        NSLog(@" json数据:%@",jsonData);
+     } ];
     
     return YES;
 }

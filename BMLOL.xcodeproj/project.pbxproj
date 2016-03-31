@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D93D37112CA05797B2C21DD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74A60D3E298F244ABC341FFC /* libPods.a */; };
+		4F3625681CACDF8300D91681 /* BMTopScrollButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3625671CACDF8300D91681 /* BMTopScrollButton.m */; };
 		4F5BDA151C9133C300020DB3 /* BMCustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BDA141C9133C300020DB3 /* BMCustomTextField.m */; };
 		4FAA91ED1C9EEEC80043A2AF /* BMHeroListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA91EC1C9EEEC80043A2AF /* BMHeroListModel.m */; };
 		4FD056FF1C8F1C6600286B4D /* BMOtherLoginVc.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD056FE1C8F1C6600286B4D /* BMOtherLoginVc.m */; };
@@ -40,6 +41,8 @@
 /* Begin PBXFileReference section */
 		1747FD30D6305A6C3CF244E4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		26B4A7D993525BD567EEDC62 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4F3625661CACDF8300D91681 /* BMTopScrollButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMTopScrollButton.h; sourceTree = "<group>"; };
+		4F3625671CACDF8300D91681 /* BMTopScrollButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMTopScrollButton.m; sourceTree = "<group>"; };
 		4F5BDA131C9133C300020DB3 /* BMCustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMCustomTextField.h; sourceTree = "<group>"; };
 		4F5BDA141C9133C300020DB3 /* BMCustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMCustomTextField.m; sourceTree = "<group>"; };
 		4FAA91EB1C9EEEC80043A2AF /* BMHeroListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMHeroListModel.h; sourceTree = "<group>"; };
@@ -347,6 +350,8 @@
 		4FFB2BA41C814A8F00395FC3 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				4F3625661CACDF8300D91681 /* BMTopScrollButton.h */,
+				4F3625671CACDF8300D91681 /* BMTopScrollButton.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -523,6 +528,7 @@
 				4FD5BEAA1CA82DD700B10EC2 /* BMPackageInfo.m in Sources */,
 				4FFB2BAB1C814C8600395FC3 /* BMCustomTabBarController.m in Sources */,
 				4F5BDA151C9133C300020DB3 /* BMCustomTextField.m in Sources */,
+				4F3625681CACDF8300D91681 /* BMTopScrollButton.m in Sources */,
 				4FAA91ED1C9EEEC80043A2AF /* BMHeroListModel.m in Sources */,
 				4FD5BEB01CA8333C00B10EC2 /* BMNewVC.m in Sources */,
 				4FDD08FD1C8C127800139EE6 /* BMLaunchViewController.m in Sources */,

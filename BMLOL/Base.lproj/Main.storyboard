@@ -221,7 +221,7 @@
         <!--咨询-->
         <scene sceneID="Qk8-Q0-l9G">
             <objects>
-                <tableViewController id="8TH-fV-3rG" sceneMemberID="viewController">
+                <tableViewController id="8TH-fV-3rG" customClass="BMNewVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jof-k8-1RT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -241,11 +241,13 @@
                             <outlet property="delegate" destination="8TH-fV-3rG" id="eyq-yb-DgO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="咨询" id="y1u-pt-lcw"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="咨询" id="f0J-hb-jal"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QEv-D7-nx7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="923" y="-1585"/>
+            <point key="canvasLocation" x="1103" y="-1645"/>
         </scene>
         <!--我-->
         <scene sceneID="hCy-mT-ljs">

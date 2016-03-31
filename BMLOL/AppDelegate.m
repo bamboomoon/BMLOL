@@ -18,16 +18,18 @@
 
 //应用程序完成启动
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-
+    
+    
+    
     //设置 navigation 的主题
     UINavigationBar *mainNaviBar = [UINavigationBar  appearance];
+    mainNaviBar.barStyle = UIBarStyleBlack; //设置 barstyle 为黑色，使状态栏高亮
     [mainNaviBar setBackgroundImage:[UIImage imageNamed:@"nav_bar_bg_for_seven"] forBarMetrics:UIBarMetricsDefault];
     
     
-    [BMNetworing BMNetworingWithUrlString:@"http://ossweb-img.qq.com/upload/qqtalk/lol_hero/hero_list.js" commple:^(NSArray *jsonData) {
-        NSLog(@" json数据:%@",jsonData);
-     } ];
+//    [BMNetworing BMNetworingWithUrlString:@"http://ossweb-img.qq.com/upload/qqtalk/lol_hero/hero_list.js" commple:^(NSArray *jsonData) {
+//        NSLog(@" json数据:%@",jsonData);
+//     } ];
     
     return YES;
 }

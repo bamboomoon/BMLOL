@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class BMNewsPhoneModel;
+@class NewsTop;
 
+
+
+typedef void(^btnClickedMethod)();
 @interface BMTopScrollButton : UIButton
+
+
 
 /**
  *  通过静态方法创建对象
@@ -19,7 +24,13 @@
  *
  *  @return 实例对象
  */
-+(instancetype) topScrollButtonDict:(BMNewsPhoneModel *) buttonDict;
++(instancetype) topScrollButtonDict:(NewsTop *) buttonDict;
 
--(instancetype) initTopScrollButtonWithDict:(BMNewsPhoneModel *) buttonDict;
+-(instancetype) initTopScrollButtonWithDict:(NewsTop *) buttonDict;
+
+//按钮被点击之后调用的block
+@property(nonatomic,copy)btnClickedMethod btnClicked;
+
+//设置上个被选中的按钮按钮
+-(void) setPreviousSelectedBtn:(BMTopScrollButton *) previousBtn;
 @end

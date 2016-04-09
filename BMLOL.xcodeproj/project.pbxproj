@@ -10,11 +10,14 @@
 		3D93D37112CA05797B2C21DD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74A60D3E298F244ABC341FFC /* libPods.a */; };
 		4F3625681CACDF8300D91681 /* BMTopScrollButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3625671CACDF8300D91681 /* BMTopScrollButton.m */; };
 		4F5BDA151C9133C300020DB3 /* BMCustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BDA141C9133C300020DB3 /* BMCustomTextField.m */; };
+		4F6920CA1CB697E40093079A /* NewsTop+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6920C71CB697E40093079A /* NewsTop+CoreDataProperties.m */; };
+		4F6920CB1CB697E40093079A /* NewsTop.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6920C91CB697E40093079A /* NewsTop.m */; };
+		4F9E29821CB017800042931F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E29801CB017800042931F /* Model.xcdatamodeld */; };
+		4F9E29841CB017D90042931F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9E29831CB017D90042931F /* CoreData.framework */; };
 		4FAA91ED1C9EEEC80043A2AF /* BMHeroListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA91EC1C9EEEC80043A2AF /* BMHeroListModel.m */; };
 		4FD056FF1C8F1C6600286B4D /* BMOtherLoginVc.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD056FE1C8F1C6600286B4D /* BMOtherLoginVc.m */; };
 		4FD5BEA51CA7063500B10EC2 /* BMNetworing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5BEA41CA7063500B10EC2 /* BMNetworing.m */; };
 		4FD5BEAA1CA82DD700B10EC2 /* BMPackageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5BEA91CA82DD700B10EC2 /* BMPackageInfo.m */; };
-		4FD5BEAD1CA830B400B10EC2 /* BMNewsPhoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5BEAC1CA830B400B10EC2 /* BMNewsPhoneModel.m */; };
 		4FD5BEB01CA8333C00B10EC2 /* BMNewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5BEAF1CA8333C00B10EC2 /* BMNewVC.m */; };
 		4FDD08F61C8B5A5A00139EE6 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FDD08F51C8B5A5A00139EE6 /* Reveal.framework */; };
 		4FDD08FD1C8C127800139EE6 /* BMLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDD08FC1C8C127800139EE6 /* BMLaunchViewController.m */; };
@@ -45,6 +48,12 @@
 		4F3625671CACDF8300D91681 /* BMTopScrollButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMTopScrollButton.m; sourceTree = "<group>"; };
 		4F5BDA131C9133C300020DB3 /* BMCustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMCustomTextField.h; sourceTree = "<group>"; };
 		4F5BDA141C9133C300020DB3 /* BMCustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMCustomTextField.m; sourceTree = "<group>"; };
+		4F6920C61CB697E40093079A /* NewsTop+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NewsTop+CoreDataProperties.h"; sourceTree = "<group>"; };
+		4F6920C71CB697E40093079A /* NewsTop+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NewsTop+CoreDataProperties.m"; sourceTree = "<group>"; };
+		4F6920C81CB697E40093079A /* NewsTop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTop.h; sourceTree = "<group>"; };
+		4F6920C91CB697E40093079A /* NewsTop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTop.m; sourceTree = "<group>"; };
+		4F9E29811CB017800042931F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		4F9E29831CB017D90042931F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		4FAA91EB1C9EEEC80043A2AF /* BMHeroListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMHeroListModel.h; sourceTree = "<group>"; };
 		4FAA91EC1C9EEEC80043A2AF /* BMHeroListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMHeroListModel.m; sourceTree = "<group>"; };
 		4FB61C011C85219D00503942 /* myPch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myPch.pch; sourceTree = "<group>"; };
@@ -54,8 +63,6 @@
 		4FD5BEA41CA7063500B10EC2 /* BMNetworing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMNetworing.m; sourceTree = "<group>"; };
 		4FD5BEA81CA82DD700B10EC2 /* BMPackageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPackageInfo.h; sourceTree = "<group>"; };
 		4FD5BEA91CA82DD700B10EC2 /* BMPackageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMPackageInfo.m; sourceTree = "<group>"; };
-		4FD5BEAB1CA830B400B10EC2 /* BMNewsPhoneModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMNewsPhoneModel.h; sourceTree = "<group>"; };
-		4FD5BEAC1CA830B400B10EC2 /* BMNewsPhoneModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMNewsPhoneModel.m; sourceTree = "<group>"; };
 		4FD5BEAE1CA8333C00B10EC2 /* BMNewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMNewVC.h; sourceTree = "<group>"; };
 		4FD5BEAF1CA8333C00B10EC2 /* BMNewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMNewVC.m; sourceTree = "<group>"; };
 		4FDD08F51C8B5A5A00139EE6 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
@@ -84,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F9E29841CB017D90042931F /* CoreData.framework in Frameworks */,
 				3D93D37112CA05797B2C21DD /* libPods.a in Frameworks */,
 				4FDD08F61C8B5A5A00139EE6 /* Reveal.framework in Frameworks */,
 			);
@@ -102,6 +110,7 @@
 		319A06FE6FC8D054320558F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F9E29831CB017D90042931F /* CoreData.framework */,
 				4FDD08F51C8B5A5A00139EE6 /* Reveal.framework */,
 				74A60D3E298F244ABC341FFC /* libPods.a */,
 			);
@@ -190,6 +199,7 @@
 				4FFB2B941C814A8500395FC3 /* Tool */,
 				4FFB2B721C7C4D2A00395FC3 /* AppDelegate.h */,
 				4FFB2B731C7C4D2A00395FC3 /* AppDelegate.m */,
+				4F9E29801CB017800042931F /* Model.xcdatamodeld */,
 				4FFB2B781C7C4D2A00395FC3 /* Main.storyboard */,
 				4FFB2B7D1C7C4D2A00395FC3 /* LaunchScreen.storyboard */,
 				4FDD08FE1C8C6E5C00139EE6 /* Assets.xcassets */,
@@ -341,8 +351,10 @@
 		4FFB2BA31C814A8F00395FC3 /* mode */ = {
 			isa = PBXGroup;
 			children = (
-				4FD5BEAB1CA830B400B10EC2 /* BMNewsPhoneModel.h */,
-				4FD5BEAC1CA830B400B10EC2 /* BMNewsPhoneModel.m */,
+				4F6920C61CB697E40093079A /* NewsTop+CoreDataProperties.h */,
+				4F6920C71CB697E40093079A /* NewsTop+CoreDataProperties.m */,
+				4F6920C81CB697E40093079A /* NewsTop.h */,
+				4F6920C91CB697E40093079A /* NewsTop.m */,
 			);
 			path = mode;
 			sourceTree = "<group>";
@@ -520,8 +532,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FFB2B741C7C4D2A00395FC3 /* AppDelegate.m in Sources */,
-				4FD5BEAD1CA830B400B10EC2 /* BMNewsPhoneModel.m in Sources */,
 				4FFB2B711C7C4D2A00395FC3 /* main.m in Sources */,
+				4F6920CA1CB697E40093079A /* NewsTop+CoreDataProperties.m in Sources */,
+				4F6920CB1CB697E40093079A /* NewsTop.m in Sources */,
+				4F9E29821CB017800042931F /* Model.xcdatamodeld in Sources */,
 				4FD056FF1C8F1C6600286B4D /* BMOtherLoginVc.m in Sources */,
 				4FD5BEA51CA7063500B10EC2 /* BMNetworing.m in Sources */,
 				4FFB2BAE1C81836900395FC3 /* BMTabBarBtn.m in Sources */,
@@ -768,6 +782,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4F9E29801CB017800042931F /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4F9E29811CB017800042931F /* Model.xcdatamodel */,
+			);
+			currentVersion = 4F9E29811CB017800042931F /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4FFB2B641C7C4D2A00395FC3 /* Project object */;
 }

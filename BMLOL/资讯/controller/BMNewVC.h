@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BMNewVC : UITableViewController
+@interface BMNewVC : UIViewController
 
 @end

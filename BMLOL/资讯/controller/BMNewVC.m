@@ -10,11 +10,14 @@
 #import "AppDelegate.h"
 #import "NewsTop.h"
 #import "BMTopScrollButton.h"
+#import "BMNewsContentCellModel.h"
+#import "BMContentTableView.h"
 
 #define  Spacing (screenWidth - 34 - (4*40))/4  //scrollView上btn之间的间隔
 #define   topScrollViewWidth  ([UIScreen mainScreen].bounds.size.width - 34) //scrollview的宽度
 
 @interface BMNewVC()
+
 
 
 @property(nonatomic,weak) UIView *viewInTopScrollView; // navigationItem中的view
@@ -56,20 +59,16 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-   
-    
     [self initTopScrollView]; //创建顶部的视图
     
     
-   
-  
-
-
-    
+    [self initContentScrollView];
+    [[BMContentTableView alloc] init];
     
     
 }
 
+#pragma mark 创建navigationbar上的scrollView视图
 
 -(void) initTopScrollView{
     //1>uivewitem 创建一个view 来包裹scrollview 和 右边的button
@@ -166,20 +165,29 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
             if ( (topScrollView.contentSize.width  - offsetXBtnClicked) > topScrollViewWidth) {
                 
                 currentBtn.btnClicked = ^(){
-                    topScrollView.contentOffset = CGPointMake(20+BtnWidth*i+Spacing*i + BtnWidth*0.5 - topScrollViewWidth * 0.5 - 14, 0);
+                    [UIView animateWithDuration:0.3f animations:^{
+                        
+                        topScrollView.contentOffset = CGPointMake(20+BtnWidth*i+Spacing*i + BtnWidth*0.5 - topScrollViewWidth * 0.5 - 14, 0);
+                    }];
                     [self moveNextBtnIsEnabel];
                 };
             }else {
                 //最后面的几个按钮 但是不居中
                 currentBtn.btnClicked = ^(){
-                    topScrollView.contentOffset = CGPointMake(topScrollView.contentSize.width-topScrollViewWidth, 0);
+                    [UIView animateWithDuration:0.3f animations:^{
+                        
+                        topScrollView.contentOffset = CGPointMake(topScrollView.contentSize.width-topScrollViewWidth, 0);
+                    }];
                     [self moveNextBtnIsEnabel];
                 };
             }
         }else {
             //offsetx为0 的按钮
             currentBtn.btnClicked = ^(){
-                topScrollView.contentOffset = CGPointMake(0, 0);
+                [UIView animateWithDuration:0.3f animations:^{
+                    
+                    topScrollView.contentOffset = CGPointMake(0, 0);
+                }];
                 [self moveNextBtnIsEnabel];
             };
         }
@@ -210,7 +218,9 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
         make.bottom.equalTo(newsVc.viewInTopScrollView.mas_bottom);
         make.width.equalTo(@40);
     }];
+   
     return btn;
+    
 }
 
 /**
@@ -246,5 +256,26 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     }
 }
 
+
+#pragma mark 创建内容区的scrollview
+
+-(void) initContentScrollView{
+    UIScrollView *contentSc = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0 , screenWidth, screenHeight)];
+    contentSc.showsVerticalScrollIndicator = NO;
+    contentSc.showsHorizontalScrollIndicator = NO;
+    contentSc.bounces =  NO;
+    contentSc.alwaysBounceVertical = NO;
+    contentSc.alwaysBounceHorizontal = NO;
+    contentSc.pagingEnabled = YES;
+    contentSc.contentSize = CGSizeMake(screenWidth * _topScrollViewBtnArray.count, 0);
+    [self.view addSubview:contentSc];
+    
+
+    
+    
+    UITableView *tab = [[UITableView alloc] init];
+    tab.frame = contentSc.frame;
+    [contentSc addSubview:tab];
+}
 
 @end

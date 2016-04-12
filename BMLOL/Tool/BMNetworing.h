@@ -16,5 +16,7 @@
  *
  *  @return json 数据
  *///- (NSURLSessionDataTask *)dataTaskWithURL:(NSURL *)url completionHandler:(void (^)(NSData * __nullable data, NSURLResponse * __nullable response, NSError * __nullable error))completionHandler;
-+(void) BMNetworingWithUrlString:(NSString *) urlString commple:(void (^)(NSArray *jsonData) ) commple;
++(void)BMNetworingWithUrlString:(NSString *)urlString commpleWithNSArray:(void (^)(NSArray *jsonData))commple;  //返回的数组
+
++(void)BMNetworingWithUrlString:(NSString *)urlString commpleWithNSDictionary:(void (^)(NSDictionary *jsonData))commple; //返回是字典
 @end

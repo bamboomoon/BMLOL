@@ -33,7 +33,7 @@
     NSEntityDescription *entiy = [NSEntityDescription entityForName:@"NewsTop" inManagedObjectContext:context];
     [fetchRequest setEntity:entiy];
     NSArray *topModel = [context executeFetchRequest:fetchRequest error:nil];
-       [BMNetworing BMNetworingWithUrlString:@"http://qt.qq.com/static/pages/news/phone/index.js" commple:^(NSArray *jsonData) {
+       [BMNetworing BMNetworingWithUrlString:@"http://qt.qq.com/static/pages/news/phone/index.js" commpleWithNSArray:^(NSArray *jsonData) {
         NSLog(@" json数据:%@",jsonData);
            if (topModel.count == 0 ) {  //从数据中查询 数据为空就增加 有就更新
                for (NSDictionary *d  in jsonData){

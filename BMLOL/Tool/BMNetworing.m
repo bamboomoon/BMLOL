@@ -1,4 +1,4 @@
-//
+;//
 //  BMNetworing.m
 //  BMLOL
 //
@@ -36,15 +36,38 @@
 
 
 
-+(void)BMNetworingWithUrlString:(NSString *)urlString commple:(void (^)(NSArray *jsonData))commple{
++(void)BMNetworingWithUrlString:(NSString *)urlString commpleWithNSArray:(void (^)(NSArray *jsonData))commple{
         NSURLSession *getHeroList = [NSURLSession sharedSession];
         NSURLSessionDataTask *data = [getHeroList dataTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-            NSArray * d  =   [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            if (!error) {
             
-            commple(d);
+                NSArray * d  =   [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                commple(d);
+            }else {
+                NSLog(@"网络请求错误");
+            }
+            
     
         }];
    
         [data resume];
+}
+
+
++(void)BMNetworingWithUrlString:(NSString *)urlString commpleWithNSDictionary:(void (^)(NSDictionary *jsonData))commple{
+    NSURLSession *getHeroList = [NSURLSession sharedSession];
+    NSURLSessionDataTask *data = [getHeroList dataTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            
+            NSDictionary * d  =   [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            commple(d);
+        }else {
+            NSLog(@"网络请求错误");
+        }
+        
+        
+    }];
+    
+    [data resume];
 }
 @end

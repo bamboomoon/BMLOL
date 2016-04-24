@@ -16,6 +16,7 @@
         self.detailTitle   = cellDataDict[@"summary"];
         self.time          = [self getTimeWith:cellDataDict[@"publication_date"]];
         self.article_url   = cellDataDict[@"article_url"];
+        self.image_url_small = cellDataDict[@"image_url_small"];
         self.image_url_big = cellDataDict[@"image_url_big"];
     }
     return self;

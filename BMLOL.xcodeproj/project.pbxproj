@@ -18,6 +18,8 @@
 		4F9E29821CB017800042931F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E29801CB017800042931F /* Model.xcdatamodeld */; };
 		4F9E29841CB017D90042931F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9E29831CB017D90042931F /* CoreData.framework */; };
 		4FAA91ED1C9EEEC80043A2AF /* BMHeroListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA91EC1C9EEEC80043A2AF /* BMHeroListModel.m */; };
+		4FC442A21CCBA38E002087B0 /* BMScollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC442A11CCBA38E002087B0 /* BMScollView.m */; };
+		4FC442A51CCBA442002087B0 /* BMNewsLasetNewTbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC442A41CCBA442002087B0 /* BMNewsLasetNewTbView.m */; };
 		4FD056FF1C8F1C6600286B4D /* BMOtherLoginVc.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD056FE1C8F1C6600286B4D /* BMOtherLoginVc.m */; };
 		4FD5BEA51CA7063500B10EC2 /* BMNetworing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5BEA41CA7063500B10EC2 /* BMNetworing.m */; };
 		4FD5BEAA1CA82DD700B10EC2 /* BMPackageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5BEA91CA82DD700B10EC2 /* BMPackageInfo.m */; };
@@ -67,6 +69,10 @@
 		4FAA91EB1C9EEEC80043A2AF /* BMHeroListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMHeroListModel.h; sourceTree = "<group>"; };
 		4FAA91EC1C9EEEC80043A2AF /* BMHeroListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMHeroListModel.m; sourceTree = "<group>"; };
 		4FB61C011C85219D00503942 /* myPch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myPch.pch; sourceTree = "<group>"; };
+		4FC442A01CCBA38E002087B0 /* BMScollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMScollView.h; sourceTree = "<group>"; };
+		4FC442A11CCBA38E002087B0 /* BMScollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMScollView.m; sourceTree = "<group>"; };
+		4FC442A31CCBA442002087B0 /* BMNewsLasetNewTbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMNewsLasetNewTbView.h; sourceTree = "<group>"; };
+		4FC442A41CCBA442002087B0 /* BMNewsLasetNewTbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMNewsLasetNewTbView.m; sourceTree = "<group>"; };
 		4FD056FD1C8F1C6600286B4D /* BMOtherLoginVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMOtherLoginVc.h; sourceTree = "<group>"; };
 		4FD056FE1C8F1C6600286B4D /* BMOtherLoginVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMOtherLoginVc.m; sourceTree = "<group>"; };
 		4FD5BEA31CA7063500B10EC2 /* BMNetworing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMNetworing.h; sourceTree = "<group>"; };
@@ -378,12 +384,16 @@
 		4FFB2BA41C814A8F00395FC3 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				4FC442A01CCBA38E002087B0 /* BMScollView.h */,
+				4FC442A11CCBA38E002087B0 /* BMScollView.m */,
 				4F3625661CACDF8300D91681 /* BMTopScrollButton.h */,
 				4F3625671CACDF8300D91681 /* BMTopScrollButton.m */,
 				4F6920CC1CBA51CE0093079A /* BMContentTableView.h */,
 				4F6920CD1CBA51CE0093079A /* BMContentTableView.m */,
 				4F6920CF1CBA536B0093079A /* BMNesContentTableViewCell.h */,
 				4F6920D01CBA536B0093079A /* BMNesContentTableViewCell.m */,
+				4FC442A31CCBA442002087B0 /* BMNewsLasetNewTbView.h */,
+				4FC442A41CCBA442002087B0 /* BMNewsLasetNewTbView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -558,6 +568,7 @@
 				4FE1D7421CBD2D30006D1AF8 /* BMSingleUrlContentModel.m in Sources */,
 				4F9E29821CB017800042931F /* Model.xcdatamodeld in Sources */,
 				4FD056FF1C8F1C6600286B4D /* BMOtherLoginVc.m in Sources */,
+				4FC442A21CCBA38E002087B0 /* BMScollView.m in Sources */,
 				4FD5BEA51CA7063500B10EC2 /* BMNetworing.m in Sources */,
 				4FFB2BAE1C81836900395FC3 /* BMTabBarBtn.m in Sources */,
 				4FD5BEAA1CA82DD700B10EC2 /* BMPackageInfo.m in Sources */,
@@ -565,6 +576,7 @@
 				4FFB2BAB1C814C8600395FC3 /* BMCustomTabBarController.m in Sources */,
 				4F5BDA151C9133C300020DB3 /* BMCustomTextField.m in Sources */,
 				4F3625681CACDF8300D91681 /* BMTopScrollButton.m in Sources */,
+				4FC442A51CCBA442002087B0 /* BMNewsLasetNewTbView.m in Sources */,
 				4F6920CE1CBA51CE0093079A /* BMContentTableView.m in Sources */,
 				4FAA91ED1C9EEEC80043A2AF /* BMHeroListModel.m in Sources */,
 				4F6920D41CBA53EC0093079A /* BMNewsContentCellModel.m in Sources */,

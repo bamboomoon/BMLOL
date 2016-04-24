@@ -37,14 +37,8 @@
                 BMNewsContentCellModel *cellModel = [BMNewsContentCellModel newsContentCellModelWithDict:dict];
                [replaceSelf.listCellModelArray addObject:cellModel];
             }
-            [self sss];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                NSLog(@"%@",[NSThread currentThread]);
-//                //数据赋值完成 发一个通知
-//                [[NSNotificationCenter defaultCenter] postNotificationName:@"listCellModelArrayOk" object:nil];
-//                NSLog(@"你妹啊你法了吗");
-//                
-//            });
+ 
+            self.getModelAfterBlock();
            
             
         }];
@@ -55,15 +49,10 @@
 }
 
 
--(void) sss {
-    NSLog(@"ss");
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"%@",[NSThread currentThread]);
-        //数据赋值完成 发一个通知
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"listCellModelArrayOk" object:nil];
-        NSLog(@"你妹啊你法了吗");
-        
-    });}
+
+
+
+
 
 
 +(instancetype) singleUrlContentModelWithUrlString:(NSString *)urlString

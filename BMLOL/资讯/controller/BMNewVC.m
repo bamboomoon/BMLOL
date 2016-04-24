@@ -12,6 +12,7 @@
 #import "BMTopScrollButton.h"
 #import "BMNewsContentCellModel.h"
 #import "BMContentTableView.h"
+#import "BMNewsLasetNewTbView.h"
 
 #define  Spacing (screenWidth - 34 - (4*40))/4  //scrollView上btn之间的间隔
 #define   topScrollViewWidth  ([UIScreen mainScreen].bounds.size.width - 34) //scrollview的宽度
@@ -60,10 +61,10 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
 {
     [super viewDidLoad];
     [self initTopScrollView]; //创建顶部的视图
-    
+    self.view.backgroundColor = [UIColor redColor];
     
     [self initContentScrollView];
-    [[BMContentTableView alloc] init];
+   
     
     
 }
@@ -260,22 +261,27 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
 #pragma mark 创建内容区的scrollview
 
 -(void) initContentScrollView{
-    UIScrollView *contentSc = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0 , screenWidth, screenHeight)];
+    UIScrollView *contentSc = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0 , screenWidth, screenHeight-44)];
     contentSc.showsVerticalScrollIndicator = NO;
     contentSc.showsHorizontalScrollIndicator = NO;
     contentSc.bounces =  NO;
     contentSc.alwaysBounceVertical = NO;
     contentSc.alwaysBounceHorizontal = NO;
     contentSc.pagingEnabled = YES;
+ 
     contentSc.contentSize = CGSizeMake(screenWidth * _topScrollViewBtnArray.count, 0);
     [self.view addSubview:contentSc];
     
 
     
     
-    UITableView *tab = [[UITableView alloc] init];
-    tab.frame = contentSc.frame;
-    [contentSc addSubview:tab];
+    BMContentTableView *tableview =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c12_list_1.shtml" isHasScroll:YES];
+    tableview.frame = CGRectMake(0,0, screenWidth, screenHeight-64-44);
+//    tableview.sectionHeaderHeight = 20;
+  
+
+    
+    [contentSc addSubview:tableview];
 }
 
 @end

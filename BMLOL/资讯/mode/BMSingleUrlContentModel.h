@@ -6,7 +6,12 @@
 //  Copyright © 2016年 donglei. All rights reserved.
 //
 
+typedef void(^getModelAfter)();
+
 #import <Foundation/Foundation.h>
+
+
+
 
 @interface BMSingleUrlContentModel : NSObject
 
@@ -35,4 +40,9 @@
 -(instancetype) initSingleUrlContentModelWithUrlString:(NSString *) urlString;
 
 +(instancetype) singleUrlContentModelWithUrlString:(NSString *) urlString;
+/**
+ *  在创建出这个对象的模型之后 执行的block
+ */
+@property(nonatomic,copy)getModelAfter getModelAfterBlock;
+
 @end

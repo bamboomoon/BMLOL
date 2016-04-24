@@ -23,7 +23,10 @@
 
 @property(nonatomic,copy) NSString *article_url;//文章链接
 
-@property(nonatomic,copy) NSString *image_url_big; //图片链接 只适配 屏幕宽度320的所以 只获取这个图片链接
+@property(nonatomic,copy) NSString *image_url_small; //图片链接 只适配 屏幕宽度320的所以 只获取这个图片链接
+
+
+@property(nonatomic,copy) NSString *image_url_big;  //大图片
 
 +(instancetype) newsContentCellModelWithDict:(NSDictionary *)cellDataDict; //工程方法
 

@@ -24,12 +24,16 @@ UITableViewDataSource
 @property(nonatomic,strong)  BMSingleUrlContentModel *contentModel;  //cell的模型数组
 
 @property(nonatomic,assign) BOOL isHasScroll;  //这个tableview 是否有图片的滚动视图
+
+
+@property(nonatomic,assign) BOOL canSearchCell;  //是否调整 tableview 的 frame 以使searchCell 合适的显示
 @end
 
 
 
 
 @implementation BMContentTableView
+
 
 
 -(instancetype)initContentTableViewFirstUrlString:(NSString *)firstUrlString isHasScroll:(BOOL)isHasScroll
@@ -39,6 +43,10 @@ UITableViewDataSource
     _isHasScroll = isHasScroll;
     if (self) {
     
+        
+        //默认是可以调整 searchCell 合适的显示的
+        _canSearchCell = YES;
+        
         //设置下拉刷新
         MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(downLoadData:)];
       
@@ -48,6 +56,8 @@ UITableViewDataSource
         [header setImages:[NSArray arrayWithObjects:[UIImage imageNamed:@"common_loading_anne_0"],[UIImage imageNamed:@"common_loading_anne_1"],nil] forState:MJRefreshStatePulling];
         self.mj_header = header;
     
+        
+  
        
         self.contentOffset = CGPointMake(0, -44);
         
@@ -72,6 +82,11 @@ UITableViewDataSource
 {
     NSLog(@"结束刷新");
     [header endRefreshing];
+//    [UIView animateWithDuration:0.3f animations:^{
+        _canSearchCell = NO;
+        self.frame = CGRectMake(0, -44, screenWidth, screenHeight - 64);
+      _canSearchCell = YES;
+//    }];
 }
 
 
@@ -88,7 +103,6 @@ UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (_isHasScroll) {
-        NSLog(@"tableView ---- numberOfRowsInSection");
         return _contentModel.listCellModelArray.count + 2;
     }
     return _contentModel.listCellModelArray.count + 1;
@@ -122,7 +136,7 @@ UITableViewDataSource
         return cell;
     }
     
-    
+    //有滚动图的 tableView
     if (_isHasScroll) {  //有滚动视图
         
             //图片轮播cell
@@ -205,6 +219,8 @@ UITableViewDataSource
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     NSLog(@"scrool --x %f",self.frame.origin.y);
+    if (_canSearchCell) {
+        
     if(self.contentOffset.y < 0 && self.frame.origin.y == -44) // 偏移量大于y 小于0=== 意味着是在向下滚动
     {
         [UIView animateWithDuration:0.3f animations:^{
@@ -220,12 +236,10 @@ UITableViewDataSource
         }];
         NSLog(@"(self.contentOffset.x) < 0");
     }
+}
     NSLog(@"scrollViewDidScroll %f",self.contentOffset.y);
 }
 
 
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
- 
-}
 
 @end

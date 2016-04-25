@@ -63,6 +63,7 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     [self initTopScrollView]; //创建顶部的视图
     self.view.backgroundColor = [UIColor redColor];
     
+    self.automaticallyAdjustsScrollViewInsets =  NO;
     [self initContentScrollView];
    
     
@@ -261,7 +262,7 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
 #pragma mark 创建内容区的scrollview
 
 -(void) initContentScrollView{
-    UIScrollView *contentSc = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0 , screenWidth, screenHeight-44)];
+    UIScrollView *contentSc = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64 , screenWidth, screenHeight-44)];
     contentSc.showsVerticalScrollIndicator = NO;
     contentSc.showsHorizontalScrollIndicator = NO;
     contentSc.bounces =  NO;
@@ -279,8 +280,8 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     tableview.frame = CGRectMake(0,0, screenWidth, screenHeight-64-44);
 //    tableview.sectionHeaderHeight = 20;
   
-
-    
+    tableview.contentInset = UIEdgeInsetsMake(-44, 0, 0, 0);
+    tableview.alwaysBounceVertical = YES;//TODO: 需要解决偏移问题
     [contentSc addSubview:tableview];
 }
 

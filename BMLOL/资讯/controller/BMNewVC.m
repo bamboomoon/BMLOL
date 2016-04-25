@@ -277,11 +277,11 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     
     
     BMContentTableView *tableview =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c12_list_1.shtml" isHasScroll:YES];
-    tableview.frame = CGRectMake(0,0, screenWidth, screenHeight-64-44);
+    tableview.frame = CGRectMake(0,-44, screenWidth, screenHeight-64);
 //    tableview.sectionHeaderHeight = 20;
   
-    tableview.contentInset = UIEdgeInsetsMake(-44, 0, 0, 0);
-    tableview.alwaysBounceVertical = YES;//TODO: 需要解决偏移问题
+//    tableview.contentInset = UIEdgeInsetsMake(-44, 0, 0, 0);
+//    tableview.alwaysBounceVertical = YES;//TODO: 需要解决偏移问题
     [contentSc addSubview:tableview];
 }
 

@@ -12,7 +12,7 @@
 #import "BMNesContentTableViewCell.h"
 #import "BMNetworing.h"
 #import "BMScollView.h"
-
+#import <MJRefresh.h>
 
 
 @interface BMContentTableView()
@@ -39,9 +39,18 @@ UITableViewDataSource
     _isHasScroll = isHasScroll;
     if (self) {
     
-        
-    self.translatesAutoresizingMaskIntoConstraints = NO; //解决自动布局 崩溃的问题
+        //设置下拉刷新
+        MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(downLoadData:)];
+      
+        [header setImages:[NSArray arrayWithObject:[UIImage imageNamed:@"common_loading_anne_0"]] forState:MJRefreshStateIdle]; //设置普通状态的动画图片
+      [header setImages:[NSArray arrayWithObject:[UIImage imageNamed:@"common_loading_anne_1"]] forState:MJRefreshStatePulling]; //设置即将刷新状态的动画图片
+        //设置正在熟悉状态的动画图片
+        [header setImages:[NSArray arrayWithObjects:[UIImage imageNamed:@"common_loading_anne_0"],[UIImage imageNamed:@"common_loading_anne_1"],nil] forState:MJRefreshStatePulling];
+        self.mj_header = header;
     
+       
+        self.contentOffset = CGPointMake(0, -44);
+        
         replaceSelf.delegate = replaceSelf;
             replaceSelf.dataSource = replaceSelf;
     
@@ -58,6 +67,12 @@ UITableViewDataSource
     return self;
 }
 
+
+-(void) downLoadData:(MJRefreshGifHeader *) header
+{
+    NSLog(@"结束刷新");
+    [header endRefreshing];
+}
 
 
 
@@ -185,6 +200,32 @@ UITableViewDataSource
 
 
 
+#pragma mark 搜索 cell 可隐藏在 navigationbar 下
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSLog(@"scrool --x %f",self.frame.origin.y);
+    if(self.contentOffset.y < 0 && self.frame.origin.y == -44) // 偏移量大于y 小于0=== 意味着是在向下滚动
+    {
+        [UIView animateWithDuration:0.3f animations:^{
+            
+            self.frame = CGRectMake(0, 0, screenWidth, screenHeight - 64 -44);
+        }];
+        NSLog(@"(self.contentOffset.x) > 0");
+    }else if(self.contentOffset.y > 0 && self.frame.origin.y == 0) //y>0意味着向上滚动
+    {
+        [UIView animateWithDuration:0.3f animations:^{
+            
+            self.frame = CGRectMake(0, -44, screenWidth, screenHeight - 64);
+        }];
+        NSLog(@"(self.contentOffset.x) < 0");
+    }
+    NSLog(@"scrollViewDidScroll %f",self.contentOffset.y);
+}
+
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+ 
+}
 
 @end

@@ -139,8 +139,11 @@ UIScrollViewDelegate
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    [self.timer invalidate];
-    self.timer = nil;
+    if(_timer){
+        
+        [self.timer invalidate];
+        self.timer = nil;
+    }
 }
 
 

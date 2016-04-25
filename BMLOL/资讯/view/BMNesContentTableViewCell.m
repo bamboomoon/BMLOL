@@ -39,7 +39,7 @@
         __weak typeof(cell) replaceCell = cell;  //防止循环引用
         
    
-        
+      
         //创建图片视图
         UIImageView *leftImageView = [[UIImageView alloc] init];
         _leftImageView = leftImageView;

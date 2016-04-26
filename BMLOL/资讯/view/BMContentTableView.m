@@ -21,12 +21,15 @@ UITableViewDelegate,
 UITableViewDataSource
 >
 
-@property(nonatomic,strong)  BMSingleUrlContentModel *contentModel;  //cell的模型数组
+@property(nonatomic,strong)  __block BMSingleUrlContentModel *contentModel;  //cell的模型数组
 
 @property(nonatomic,assign) BOOL isHasScroll;  //这个tableview 是否有图片的滚动视图
 
 
 @property(nonatomic,assign) BOOL canSearchCell;  //是否调整 tableview 的 frame 以使searchCell 合适的显示
+
+
+@property(nonatomic,copy) NSString * firstUrlString; //第一页数据url string
 @end
 
 
@@ -43,7 +46,8 @@ UITableViewDataSource
     _isHasScroll = isHasScroll;
     if (self) {
     
-        
+    
+        _firstUrlString = firstUrlString;
         //默认是可以调整 searchCell 合适的显示的
         _canSearchCell = YES;
         
@@ -64,29 +68,63 @@ UITableViewDataSource
         replaceSelf.delegate = replaceSelf;
             replaceSelf.dataSource = replaceSelf;
     
-         __weak BMSingleUrlContentModel *contentModel = [BMSingleUrlContentModel singleUrlContentModelWithUrlString:firstUrlString];
-            _contentModel = contentModel;
-            //这里执行 模型 在异步在获取到数据之后 执行的方法
-            contentModel.getModelAfterBlock = ^(){
-    
-                [replaceSelf reloadData];
-            };
-            
+//          BMSingleUrlContentModel *contentModel = [BMSingleUrlContentModel singleUrlContentModelWithUrlString:firstUrlString];
+//            //这里执行 模型 在异步在获取到数据之后 执行的方法
+//            contentModel.getModelAfterBlock = ^(){
+//    
+//                _contentModel = contentModel;
+//                [replaceSelf reloadData];
+//            };
+        
+        
+        [self getDataAndUpdateTableView:_firstUrlString withMJRefreshGifHeader:nil];
+        
           
         }
     return self;
 }
 
 
+#pragma mark 获取数据并刷新
+/**
+ *  使用在初始化时获取数据 和刷新的时候获取数据
+ *
+ *  @param urlString 获取数据的地址
+ *  @param header    下拉刷新时获取数据的下拉刷新控件
+ */
+-(void) getDataAndUpdateTableView:(NSString *) urlString withMJRefreshGifHeader:(MJRefreshGifHeader *) header
+{
+    
+    //重新获取数据
+    BMSingleUrlContentModel *contentModel = [BMSingleUrlContentModel singleUrlContentModelWithUrlString:urlString];
+    
+    __weak typeof(self) replaceSelf = self;
+    
+    
+    contentModel.getModelAfterBlock = ^(){
+        _contentModel = contentModel;
+        [replaceSelf reloadData];
+        if (header) { //如果是刷新 获取数据,就结束刷新.否则就不执行
+            [header endRefreshing];  //刷新结束
+        }
+    };
+}
+
+/**
+ *
+ * 下拉刷新数据
+ *  @param header 下拉刷新控件
+ */
 -(void) downLoadData:(MJRefreshGifHeader *) header
 {
-    NSLog(@"结束刷新");
-    [header endRefreshing];
-//    [UIView animateWithDuration:0.3f animations:^{
-        _canSearchCell = NO;
-        self.frame = CGRectMake(0, -44, screenWidth, screenHeight - 64);
-      _canSearchCell = YES;
-//    }];
+ 
+
+    [self getDataAndUpdateTableView:_firstUrlString withMJRefreshGifHeader:header];
+
+    //调整 searchcell的显示位置
+    _canSearchCell = NO;
+    self.frame = CGRectMake(0, -44, screenWidth, screenHeight - 64);
+    _canSearchCell = YES;
 }
 
 
@@ -194,11 +232,6 @@ UITableViewDataSource
     return cell;
 }
 
--(void) scrollImageok
-{
-    NSLog(@"scrollImageok");
-    [self reloadData];
-}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

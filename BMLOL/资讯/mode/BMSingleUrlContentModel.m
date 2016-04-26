@@ -39,8 +39,9 @@
             }
  
             dispatch_async(dispatch_get_main_queue(), ^{
-                
+                if(_getModelAfterBlock){
                 self.getModelAfterBlock(); // 主线程刷新
+                }
             });
            
             

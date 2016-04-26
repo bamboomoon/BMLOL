@@ -110,7 +110,7 @@ UIScrollViewDelegate
     cuimagev.frame = CGRectMake(self.scrollViewWidth, 0, self.scrollViewWidth, self.scrollViewHeight);
     [cuimagev sd_setImageWithURL:[NSURL URLWithString:model0.image_url_big]];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"scrollImageOk" object:self];
+    
     self.currentImageView = cuimagev;
     [self addSubview:cuimagev];
     self.currentIndex = 0;

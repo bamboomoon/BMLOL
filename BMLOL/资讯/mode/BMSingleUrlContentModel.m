@@ -38,7 +38,10 @@
                [replaceSelf.listCellModelArray addObject:cellModel];
             }
  
-            self.getModelAfterBlock();
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                self.getModelAfterBlock(); // 主线程刷新
+            });
            
             
         }];

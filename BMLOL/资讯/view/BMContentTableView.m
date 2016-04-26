@@ -152,7 +152,7 @@ UITableViewDataSource
                     
                     //发送网络请求 获取到图片滚动视图的json数据
                     [BMNetworing BMNetworingWithUrlString:@"http://qt.qq.com/static/pages/news/phone/c13_list_1.shtml" commpleWithNSDictionary:^(NSDictionary *jsonData) {
-                              NSLog(@"kuaima -imageScroll");
+                        
                         //第一张图片加载OK 发送通知刷新界面
                         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollImageok) name:@"scrollImageOk" object:nil];
                         
@@ -162,11 +162,18 @@ UITableViewDataSource
                             BMNewsContentCellModel *model  = [BMNewsContentCellModel newsContentCellModelWithDict:dict];
                             [modelArray addObject:model];
                         }
-                        //创建滚动视图
-                        BMScollView *scrollView = [BMScollView BMScrollImages:modelArray offest:CGPointMake(0, 0) scrollViewSize:CGSizeMake(screenWidth, screenWidth * 0.5)];
-                        scrollView.frame =  CGRectMake(0, 0, screenWidth, screenWidth * 0.5);
-                        //将视图添加到cell中
-                        [imageScrollCell.contentView addSubview:scrollView];
+                       
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            //创建滚动视图
+                            BMScollView *scrollView = [BMScollView BMScrollImages:modelArray offest:CGPointMake(0, 0) scrollViewSize:CGSizeMake(screenWidth, screenWidth * 0.5)];
+                            scrollView.frame =  CGRectMake(0, 0, screenWidth, screenWidth * 0.5);
+                            //将视图添加到cell中
+                            [imageScrollCell.contentView addSubview:scrollView];
+                            
+                            
+                            [self reloadData];
+                        });
                   
                     }];
                     

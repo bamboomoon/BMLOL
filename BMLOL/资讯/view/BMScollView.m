@@ -93,6 +93,8 @@ UIScrollViewDelegate
 -(void) addTwoImageViewToScrollView{
     
 
+    NSLog(@"addTwoImageViewToScrollView");
+    
     //创建另一个图片view
     UIImageView *otherimagev =   [[UIImageView alloc] init];
     otherimagev.frame = CGRectMake(self.scrollViewWidth, 0, self.scrollViewWidth, self.scrollViewHeight);
@@ -105,8 +107,9 @@ UIScrollViewDelegate
     //取出数组中的模型
     BMNewsContentCellModel *model0 = (BMNewsContentCellModel*)_scrollImageArray[0];
      UIImageView *cuimagev =   [[UIImageView alloc] init];
-    [cuimagev sd_setImageWithURL:[NSURL URLWithString:model0.image_url_big]];
     cuimagev.frame = CGRectMake(self.scrollViewWidth, 0, self.scrollViewWidth, self.scrollViewHeight);
+    [cuimagev sd_setImageWithURL:[NSURL URLWithString:model0.image_url_big]];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:@"scrollImageOk" object:self];
     self.currentImageView = cuimagev;
     [self addSubview:cuimagev];

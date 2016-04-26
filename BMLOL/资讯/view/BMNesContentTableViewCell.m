@@ -116,21 +116,21 @@
     for (UIView* cellIncludeView in cell.contentView.subviews) {
         switch (cellIncludeView.tag) {
             case 10:
-                NSLog(@"%@",cellIncludeView);
+               
                 [(UIImageView*)cellIncludeView sd_setImageWithURL:[NSURL URLWithString:cellModel.image_url_small]];
-                NSLog(@"tupian");
+                
                 break;
             case 11:
                 ((UILabel *)cellIncludeView).text = cellModel.title;
-                NSLog(@"biaoti");
+             
                 break;
             case 12:
                 ((UITextView*)cellIncludeView).text = cellModel.detailTitle;
-                NSLog(@"zibaioti");
+              
                 break;
             case 13:
                 ((UILabel *)cellIncludeView).text =cellModel.time;
-                NSLog(@"shijian");
+             
                 break;
             default:
                 break;

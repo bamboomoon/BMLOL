@@ -28,7 +28,7 @@
 //        
 //    }];
 //    
-//    NSLog(@"看看 i %d",i);
+//   
 //    [data resume];
 //    
 //    return dict;

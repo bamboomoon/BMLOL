@@ -19,6 +19,9 @@
 
 #define screenHeight  [UIScreen mainScreen].bounds.size.height
 
+#define newsUrlPath   @"http://qt.qq.com/static/pages/news/phone/"
+
+
 #ifdef __DEBUY__
 #define BMLog(...) NSLog(__VA_ARGS__)
 #else 

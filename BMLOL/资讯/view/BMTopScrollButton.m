@@ -70,6 +70,19 @@ static  BMTopScrollButton *previousSelectedBtn;  //上一个被点击的按钮
     }
         previousSelectedBtn = btn;
      self.btnClicked(); //调用block方法  170 140 88
+     self.btnClickWithChangeContentScroll();  //改变内容视图的位置
+}
+
+-(void)btnClickChangeContentScrollView:(BMTopScrollButton *)btn
+{
+    btn.selected = YES;
+    
+    if(previousSelectedBtn && previousSelectedBtn != btn){
+        previousSelectedBtn.selected = NO; //将上一个按钮选中状态取消
+        
+    }
+    previousSelectedBtn = btn;
+    self.btnClicked(); //调用block方法  170 140 88
 }
 
 @end

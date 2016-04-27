@@ -39,4 +39,10 @@ typedef void(^btnClickedMethod)();
 
 
 @property(nonatomic,strong) BMTopScrollButton *nextBtn;    //当前被点击的按钮的下一个按钮 用于topscrollview右边那个按钮的处理
+
+//这个 block 点击之后的 block 但是这个不会再内容 scrollview 滚动时调用
+@property(nonatomic,copy) btnClickedMethod btnClickWithChangeContentScroll;
+
+//这个方法在 改变内容 scrollView之后，需要改变按钮的位置
+-(void) btnClickChangeContentScrollView:(BMTopScrollButton *)btn;
 @end

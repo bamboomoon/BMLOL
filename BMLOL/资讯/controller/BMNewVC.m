@@ -18,7 +18,9 @@
 #define   topScrollViewWidth  ([UIScreen mainScreen].bounds.size.width - 34) //scrollview的宽度
 
 @interface BMNewVC()
-
+<
+UIScrollViewDelegate
+>
 
 
 @property(nonatomic,weak) UIView *viewInTopScrollView; // navigationItem中的view
@@ -31,6 +33,9 @@
 
 
 @property(nonatomic,weak) UIButton *moveNextBtnInScrollView;//顶部topScorllView中最右边的btn
+
+//包裹 tableView 的内容的 ScrollView
+@property(nonatomic,weak) UIScrollView *contentScroll;
 
 @end
 
@@ -57,11 +62,14 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     return _newsTopDataModelArray;
 }
 
+
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+   
     [self initTopScrollView]; //创建顶部的视图
-
+    
     
     self.automaticallyAdjustsScrollViewInsets =  NO;
     [self initContentScrollView];
@@ -77,7 +85,7 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     UIView *viewItem = [[UIView alloc] init];
     UINavigationItem *viewnavititem = [[UINavigationItem alloc] init];
     viewnavititem.titleView  = viewItem;
-    
+    viewnavititem.hidesBackButton = YES; //隐藏这个 item 的 backButton
     
     CGFloat contentSizeWidth = (self.newsTopDataModelArray.count - 1)*Spacing+40*self.newsTopDataModelArray.count+20;
     
@@ -133,7 +141,7 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     UIView *viewInTopScrollView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, contentSizeWidth, 28)];
     self.viewInTopScrollView = viewInTopScrollView;
     [topScrollView addSubview:viewInTopScrollView];
-    
+  
     //创建第一个btn
     NewsTop *oneTopMoel = (NewsTop*)self.newsTopDataModelArray[0];
     BMTopScrollButton *oneBtn = [BMTopScrollButton topScrollButtonDict:oneTopMoel];
@@ -141,7 +149,13 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     [oneBtn setSelected:YES];
     [oneBtn setPreviousSelectedBtn:oneBtn];
     oneBtn.btnClicked = ^(){
+
         [self moveNextBtnIsEnabel];
+    };
+    
+    //调整内容 scrollView 的 offestX block
+    oneBtn.btnClickWithChangeContentScroll = ^(){
+        _contentScroll.contentOffset = CGPointMake(screenWidth * 0, 0);
     };
     _topScrollViewBtnArray = [NSMutableArray array];
     oneBtn.tag = 0;
@@ -171,7 +185,13 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
                         
                         topScrollView.contentOffset = CGPointMake(20+BtnWidth*i+Spacing*i + BtnWidth*0.5 - topScrollViewWidth * 0.5 - 14, 0);
                     }];
+
                     [self moveNextBtnIsEnabel];
+                };
+                
+                //调整内容 scrollView 的 offestX block
+                currentBtn.btnClickWithChangeContentScroll = ^(){
+                    _contentScroll.contentOffset = CGPointMake(screenWidth * i, 0);
                 };
             }else {
                 //最后面的几个按钮 但是不居中
@@ -179,8 +199,15 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
                     [UIView animateWithDuration:0.3f animations:^{
                         
                         topScrollView.contentOffset = CGPointMake(topScrollView.contentSize.width-topScrollViewWidth, 0);
+
                     }];
+
                     [self moveNextBtnIsEnabel];
+                };
+                
+                //调整内容 scrollView 的 offestX block
+                currentBtn.btnClickWithChangeContentScroll = ^(){
+                    _contentScroll.contentOffset = CGPointMake(screenWidth * i, 0);
                 };
             }
         }else {
@@ -189,8 +216,14 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
                 [UIView animateWithDuration:0.3f animations:^{
                     
                     topScrollView.contentOffset = CGPointMake(0, 0);
+
                 }];
+
                 [self moveNextBtnIsEnabel];
+            };
+            //调整内容 scrollView 的 offestX block
+            currentBtn.btnClickWithChangeContentScroll = ^(){
+                _contentScroll.contentOffset = CGPointMake(screenWidth * i, 0);
             };
         }
         
@@ -263,33 +296,32 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
 
 -(void) initContentScrollView{
     UIScrollView *contentSc = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64 , screenWidth, screenHeight-44)];
+    _contentScroll = contentSc;
     contentSc.showsVerticalScrollIndicator = NO;
     contentSc.showsHorizontalScrollIndicator = NO;
     contentSc.bounces =  NO;
     contentSc.alwaysBounceVertical = NO;
     contentSc.alwaysBounceHorizontal = NO;
+    contentSc.decelerationRate = 0.001f;
+
     contentSc.pagingEnabled = YES;
- 
+    contentSc.delegate  = self;
     contentSc.contentSize = CGSizeMake(screenWidth * _topScrollViewBtnArray.count, 0);
     [self.view addSubview:contentSc];
     
 
     
-    
+    //最新
     BMContentTableView *tableview =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c12_list_1.shtml" isHasScroll:YES inScrollViewX:screenWidth * 0];
     tableview.frame = CGRectMake(screenWidth * 0,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview];
-
-   
     
+//  赛事
     
-    
-//    //获取各个 tableview 的第一页的 urlString
-    
-        BMContentTableView *tableview1 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c73_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 1];
-        tableview1.frame = CGRectMake(screenWidth * 1,-44, screenWidth, screenHeight-64);
-        [contentSc addSubview:tableview1];
-//活动
+    BMContentTableView *tableview1 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c73_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 1];
+    tableview1.frame = CGRectMake(screenWidth * 1,-44, screenWidth, screenHeight-64);
+    [contentSc addSubview:tableview1];
+// 活动 //TODO: urlString 有问题
     BMContentTableView *tableview2 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c12_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 2];
     tableview2.frame = CGRectMake(screenWidth * 2,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview2];
@@ -297,21 +329,21 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     BMContentTableView *tableview3 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c12_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 3];
     tableview3.frame = CGRectMake(screenWidth * 3,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview3];
-//
+//娱乐
     BMContentTableView *tableview4 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c18_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 4];
     tableview4.frame = CGRectMake(screenWidth * 4,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview4];
-//
-//    
+
+//官方
     BMContentTableView *tableview5 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c3_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 5];
     tableview5.frame = CGRectMake(screenWidth * 5,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview5];
-//
+//美女
     BMContentTableView *tableview6 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c17_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 6];
     tableview6.frame = CGRectMake(screenWidth * 6,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview6];
-    
-    BMContentTableView *tableview7 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c17_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 7];
+//攻略
+    BMContentTableView *tableview7 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c10_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 7];
     tableview7.frame = CGRectMake(screenWidth * 7,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview7];
     
@@ -319,6 +351,42 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
 
 
 }
+
+
+#pragma mark UIScrollViewDelegate
+// 内容 scrollView 滚动超过屏幕一半时。就滚动到下一页 同时 topScrollView 标题也发生改变
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    int k = 0;
+    if (scrollView.contentOffset.x > 0 && scrollView.contentOffset.x <= screenWidth * 0.5) {
+        k = 0;
+    }
+    if (scrollView.contentOffset.x > screenWidth * 0.5 && scrollView.contentOffset.x <= screenWidth * 1.5) {
+        k  = 1 ;
+    }
+    if (scrollView.contentOffset.x > screenWidth * 1.5 && scrollView.contentOffset.x <= screenWidth * 2.5) {
+        k = 2;
+    }
+    if (scrollView.contentOffset.x > screenWidth * 2.5 && scrollView.contentOffset.x <= screenWidth * 3.5) {
+        k = 3;
+    }
+    if (scrollView.contentOffset.x > screenWidth * 3.5 && scrollView.contentOffset.x <= screenWidth * 4.5) {
+        k = 4;
+    }
+    if (scrollView.contentOffset.x > screenWidth * 4.5 && scrollView.contentOffset.x <= screenWidth * 5.5) {
+        k = 5;
+    }
+    if (scrollView.contentOffset.x > screenWidth * 5.5 && scrollView.contentOffset.x <= screenWidth * 6.5) {
+        k = 6;
+    }
+    if (scrollView.contentOffset.x > screenWidth * 6.5 && scrollView.contentOffset.x <= screenWidth * 7.5) {
+        k = 7;
+    }
+    BMTopScrollButton * nextBtn = (BMTopScrollButton*) _topScrollViewBtnArray[k];
+    [nextBtn btnClickChangeContentScrollView:nextBtn];
+
+}
+
 
 
 

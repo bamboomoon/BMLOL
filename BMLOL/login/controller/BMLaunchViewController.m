@@ -21,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     //1>创建『手机QQ快速登陆』按钮
     UIButton  *qqLoginBtn = ({
     

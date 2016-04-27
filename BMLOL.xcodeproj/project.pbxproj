@@ -20,6 +20,7 @@
 		4FAA91ED1C9EEEC80043A2AF /* BMHeroListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA91EC1C9EEEC80043A2AF /* BMHeroListModel.m */; };
 		4FC442A21CCBA38E002087B0 /* BMScollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC442A11CCBA38E002087B0 /* BMScollView.m */; };
 		4FC442A51CCBA442002087B0 /* BMNewsLasetNewTbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC442A41CCBA442002087B0 /* BMNewsLasetNewTbView.m */; };
+		4FCA3F3D1CD0745300D716D0 /* newsNavigationUrlString.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4FCA3F3C1CD0745300D716D0 /* newsNavigationUrlString.plist */; };
 		4FD056FF1C8F1C6600286B4D /* BMOtherLoginVc.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD056FE1C8F1C6600286B4D /* BMOtherLoginVc.m */; };
 		4FD5BEA51CA7063500B10EC2 /* BMNetworing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5BEA41CA7063500B10EC2 /* BMNetworing.m */; };
 		4FD5BEAA1CA82DD700B10EC2 /* BMPackageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5BEA91CA82DD700B10EC2 /* BMPackageInfo.m */; };
@@ -73,6 +74,7 @@
 		4FC442A11CCBA38E002087B0 /* BMScollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMScollView.m; sourceTree = "<group>"; };
 		4FC442A31CCBA442002087B0 /* BMNewsLasetNewTbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMNewsLasetNewTbView.h; sourceTree = "<group>"; };
 		4FC442A41CCBA442002087B0 /* BMNewsLasetNewTbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMNewsLasetNewTbView.m; sourceTree = "<group>"; };
+		4FCA3F3C1CD0745300D716D0 /* newsNavigationUrlString.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = newsNavigationUrlString.plist; sourceTree = "<group>"; };
 		4FD056FD1C8F1C6600286B4D /* BMOtherLoginVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMOtherLoginVc.h; sourceTree = "<group>"; };
 		4FD056FE1C8F1C6600286B4D /* BMOtherLoginVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMOtherLoginVc.m; sourceTree = "<group>"; };
 		4FD5BEA31CA7063500B10EC2 /* BMNetworing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMNetworing.h; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				4FFB2B701C7C4D2A00395FC3 /* main.m */,
+				4FCA3F3C1CD0745300D716D0 /* newsNavigationUrlString.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 			files = (
 				4FFB2B7F1C7C4D2A00395FC3 /* LaunchScreen.storyboard in Resources */,
 				4FDD08FF1C8C6E5C00139EE6 /* Assets.xcassets in Resources */,
+				4FCA3F3D1CD0745300D716D0 /* newsNavigationUrlString.plist in Resources */,
 				4FFB2B7A1C7C4D2A00395FC3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

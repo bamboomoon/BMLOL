@@ -53,10 +53,8 @@ static  BMTopScrollButton *previousSelectedBtn;  //上一个被点击的按钮
 -(void)setSelected:(BOOL)selected{
     [super setSelected:selected];
     if (selected) {
-        NSLog(@"true");
          self.titleLabel.font = [UIFont systemFontOfSize:19.f];  //按钮是选中状态就放大
     }else {
-        NSLog(@"no");
          previousSelectedBtn.titleLabel.font = [UIFont systemFontOfSize:17.f];
     }
 }

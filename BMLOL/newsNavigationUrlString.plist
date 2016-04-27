@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<string></string>
+	<string>http://qt.qq.com/static/pages/news/phone/c12_list_1.shtml
+</string>
+	<string>http://qt.qq.com/static/pages/news/phone/c73_list_1.shtml</string>
+	<string>http://qt.qq.com/static/pages/news/phone/c3_list_1.shtml</string>
+	<string>http://lol.qq.com/m/act/a20150319lolapp/video.htm?APP_BROWSER_VERSION_CODE=1&amp;ios_version=873 </string>
+	<string>http://qt.qq.com/static/pages/news/phone/c18_list_1.shtml</string>
+	<string>http://qt.qq.com/static/pages/news/phone/c3_list_1.shtml</string>
+	<string>http://qt.qq.com/static/pages/news/phone/c17_list_1.shtml</string>
+	<string>http://qt.qq.com/static/pages/news/phone/c10_list_1.shtml</string>
 </array>
 </plist>

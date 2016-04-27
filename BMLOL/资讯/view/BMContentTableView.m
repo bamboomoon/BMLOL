@@ -39,6 +39,10 @@ UITableViewDataSource
 
 //当前tableview 中有多少行cell。用处：上拉刷新时，知道在哪里插入数据
 @property(nonatomic,assign) NSInteger                  allCellCount;
+
+
+//该 tableView 在 scrollView 中的 x坐标
+@property(nonatomic,assign) CGFloat  tableViewInScrollViewX;
 @end
 
 
@@ -56,14 +60,14 @@ UITableViewDataSource
     return _dataArray;
 }
 
--(instancetype)initContentTableViewFirstUrlString:(NSString *)firstUrlString isHasScroll:(BOOL)isHasScroll
+-(instancetype)initContentTableViewFirstUrlString:(NSString *)firstUrlString isHasScroll:(BOOL)isHasScroll inScrollViewX:(CGFloat) x
 {
   self =   [super init];
     __weak typeof(self) replaceSelf = self;
     _isHasScroll = isHasScroll;
     if (self) {
     
-        
+        _tableViewInScrollViewX = x;
         //如果有滚动图 在没有数据的时候就已经 2 个 cell 了，否则只有 1 个
         isHasScroll == YES ? (_allCellCount = 2): (_allCellCount = 1);
     
@@ -132,7 +136,6 @@ UITableViewDataSource
     
     //重新获取数据
     __weak BMSingleUrlContentModel *contentModel = [BMSingleUrlContentModel singleUrlContentModelWithUrlString:urlString];
-    
     __weak typeof(self) replaceSelf = self;
     
     
@@ -141,6 +144,7 @@ UITableViewDataSource
         
         
      _contentModel = contentModel;
+        NSLog(@"重新获取数据:%@",contentModel.listCellModelArray);
         
       
         if (footer) {  //如果是上拉刷新
@@ -175,7 +179,7 @@ UITableViewDataSource
         }
         
        
-        NSLog(@"dataarray --- %@",self.dataArray);
+      
 
         
     };
@@ -194,7 +198,7 @@ UITableViewDataSource
 
     //调整 searchcell的显示位置
     _canSearchCell = NO;
-    self.frame = CGRectMake(0, -44, screenWidth, screenHeight - 64);
+    self.frame = CGRectMake(_tableViewInScrollViewX, -44, screenWidth, screenHeight - 64);
     _canSearchCell = YES;
 }
 
@@ -315,6 +319,8 @@ UITableViewDataSource
     //取 model 中的第几个 元素
     NSInteger i  = (indexPath.row - k ) % 20;
     
+    NSLog(@"lodingUrlString:%@---model%@",_firstUrlString,model.listCellModelArray);
+    
     //_contentModel.listCellModelArray[indexPath.row -k ]
     BMNesContentTableViewCell *cell = [BMNesContentTableViewCell newsContentTableViewCellWithContentModel:model.listCellModelArray[i] tableView:self];
     
@@ -354,13 +360,13 @@ UITableViewDataSource
     {
         [UIView animateWithDuration:0.3f animations:^{
             
-            self.frame = CGRectMake(0, 0, screenWidth, screenHeight - 64 -44);
+            self.frame = CGRectMake(_tableViewInScrollViewX, 0, screenWidth, screenHeight - 64 -44);
         }];
             }else if(self.contentOffset.y > 0 && self.frame.origin.y == 0) //y>0意味着向上滚动
     {
         [UIView animateWithDuration:0.3f animations:^{
             
-            self.frame = CGRectMake(0, -44, screenWidth, screenHeight - 64);
+            self.frame = CGRectMake(_tableViewInScrollViewX, -44, screenWidth, screenHeight - 64);
         }];
       
     }

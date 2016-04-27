@@ -10,8 +10,16 @@
 
 @interface BMContentTableView : UITableView
 
-
--(instancetype) initContentTableViewFirstUrlString:(NSString *) firstUrlString isHasScroll:(BOOL)isHasScroll;
+/**
+ *  创建放在 scrollView 中的 tableView
+ *
+ *  @param firstUrlString tableView 加载的第一页的 urlString
+ *  @param isHasScroll    tablieView 是否带有滚动图片
+ *  @param x              tableView 在 scrollView 中的x坐标
+ *
+ *  @return <#return value description#>
+ */
+-(instancetype) initContentTableViewFirstUrlString:(NSString *) firstUrlString isHasScroll:(BOOL)isHasScroll inScrollViewX:(CGFloat) x;
 
 
 /**
@@ -21,17 +29,5 @@
 -(UITableViewCell *) createCellTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 
-/**
- *
- * 暴露出来给子类来 重写
- *
- */
--(NSInteger) numberofRow;
 
-/**
- *  同样的给子类 
- *
- *  @return <#return value description#>
- */
--(CGFloat) cellHeight;
 @end

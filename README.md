@@ -22,3 +22,12 @@ navigation
 * 攻略： http://qt.qq.com/static/pages/news/phone/c10_list_1.shtml
 * 视频： http://lol.qq.com/m/act/a20150319lolapp/video.htm?APP_BROWSER_VERSION_CODE=1&ios_version=873 
 
+----
+
+**4.27:**
+* 完成资讯 tabBar 的所有布局.下一步:完成 navigationItem 中的 scrollView 中的按钮与内容中的 tableView 的关联逻辑
+![](/Users/donglei/Documents/Ios/BMLOL4.4.0/readmeImage/Simulator Screen Shot 2016年4月27日 下午6.14.22.png
+)
+
+
+

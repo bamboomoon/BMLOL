@@ -61,7 +61,7 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
 {
     [super viewDidLoad];
     [self initTopScrollView]; //创建顶部的视图
-    self.view.backgroundColor = [UIColor redColor];
+
     
     self.automaticallyAdjustsScrollViewInsets =  NO;
     [self initContentScrollView];
@@ -276,9 +276,50 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
 
     
     
-    BMContentTableView *tableview =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c12_list_1.shtml" isHasScroll:YES];
-    tableview.frame = CGRectMake(0,-44, screenWidth, screenHeight-64);
+    BMContentTableView *tableview =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c12_list_1.shtml" isHasScroll:YES inScrollViewX:screenWidth * 0];
+    tableview.frame = CGRectMake(screenWidth * 0,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview];
+
+   
+    
+    
+    
+//    //获取各个 tableview 的第一页的 urlString
+    
+        BMContentTableView *tableview1 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c73_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 1];
+        tableview1.frame = CGRectMake(screenWidth * 1,-44, screenWidth, screenHeight-64);
+        [contentSc addSubview:tableview1];
+//活动
+    BMContentTableView *tableview2 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c12_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 2];
+    tableview2.frame = CGRectMake(screenWidth * 2,-44, screenWidth, screenHeight-64);
+    [contentSc addSubview:tableview2];
+//视频
+    BMContentTableView *tableview3 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c12_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 3];
+    tableview3.frame = CGRectMake(screenWidth * 3,-44, screenWidth, screenHeight-64);
+    [contentSc addSubview:tableview3];
+//
+    BMContentTableView *tableview4 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c18_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 4];
+    tableview4.frame = CGRectMake(screenWidth * 4,-44, screenWidth, screenHeight-64);
+    [contentSc addSubview:tableview4];
+//
+//    
+    BMContentTableView *tableview5 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c3_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 5];
+    tableview5.frame = CGRectMake(screenWidth * 5,-44, screenWidth, screenHeight-64);
+    [contentSc addSubview:tableview5];
+//
+    BMContentTableView *tableview6 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c17_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 6];
+    tableview6.frame = CGRectMake(screenWidth * 6,-44, screenWidth, screenHeight-64);
+    [contentSc addSubview:tableview6];
+    
+    BMContentTableView *tableview7 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c17_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 7];
+    tableview7.frame = CGRectMake(screenWidth * 7,-44, screenWidth, screenHeight-64);
+    [contentSc addSubview:tableview7];
+    
+    
+
+
 }
+
+
 
 @end

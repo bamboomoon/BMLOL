@@ -58,8 +58,10 @@
     NSURLSession *getHeroList = [NSURLSession sharedSession];
     NSURLSessionDataTask *data = [getHeroList dataTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
+            NSError *err;
+            NSDictionary * d  =   [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&err];
             
-            NSDictionary * d  =   [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            
             commple(d);
         }else {
             NSLog(@"网络请求错误");

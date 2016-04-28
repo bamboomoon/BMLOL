@@ -4,7 +4,7 @@
 //
 //  Created by donglei on 16/4/5.
 //  Copyright © 2016年 donglei. All rights reserved.
-//
+//  这里是滚动图片
 
 #import "BMScollView.h"
 #import "BMNewsContentCellModel.h"
@@ -41,10 +41,16 @@ UIScrollViewDelegate
 @property(nonatomic,assign) int  currentIndex;  //显示在屏幕上的那张图片在图片数组中位置
 
 @property(nonatomic,assign) int  nextIndex;     //下一张要显示在图片的数组中位置
+
+
+@property(nonatomic,weak) UILabel *otherImageLabel;
+
+@property(nonatomic,weak) UILabel *currentImageLabel;
+
+
 @end
 
 @implementation BMScollView
-
 
 
 
@@ -73,6 +79,9 @@ UIScrollViewDelegate
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO;
         
+     
+        
+    
         
         //在scrollview上加上两个imageView
         [self addTwoImageViewToScrollView];
@@ -90,6 +99,8 @@ UIScrollViewDelegate
 
 
 
+
+
 -(void) addTwoImageViewToScrollView{
     
 
@@ -100,6 +111,14 @@ UIScrollViewDelegate
     otherimagev.frame = CGRectMake(self.scrollViewWidth, 0, self.scrollViewWidth, self.scrollViewHeight);
     self.otherImageView = otherimagev;
     [self addSubview:otherimagev];
+    //创建承载 label的 view
+    UIView *otherView = [self createViewWithLabel];
+    [otherimagev addSubview:otherView];
+    //添加 label
+    UILabel * label = [self createLabelInImage];
+    _otherImageLabel = label;
+    [otherView addSubview:label];
+    
     
     
     
@@ -115,10 +134,45 @@ UIScrollViewDelegate
     [self addSubview:cuimagev];
     self.currentIndex = 0;
     
+    //创建 view
+    UIView *cuiView = [self createViewWithLabel];
+    [cuimagev addSubview:cuiView];
+    //添加 label
+    UILabel *label2 = [self createLabelInImage];
+    self.currentImageLabel = label2;
+    label2.text = model0.title;
+    [cuiView addSubview:label2];
+    
+
 
 }
 
 
+#pragma mark 创建 label
+/**
+ *  创建一个 view 来放置 lable
+ *
+ *  @return 创建好的 view
+ */
+-(UIView *) createViewWithLabel{
+    CGFloat labelHeight = screenWidth * 0.5 * 1/8; //screenwidth * 0.5 为滚动图片的高度
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, screenWidth * 0.5 - labelHeight, screenWidth, labelHeight)];
+    [view setBackgroundColor:[UIColor colorWithRed:173/255.0 green:171/255.0 blue:159/255.0 alpha:1.0]];
+    return  view;
+}
+/**
+ *  创建在图片上显示标题的 label
+ *  @return 创建好的 label
+ */
+-(UILabel *) createLabelInImage{
+    CGFloat labelHeight = screenWidth * 0.5 * 1/8; //screenwidth * 0.5 为滚动图片的高度
+    UILabel *laebl = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, screenWidth -  10, labelHeight - 10)];
+    [laebl setFont:[UIFont systemFontOfSize:15.f]];
+    return  laebl;
+}
+
+
+#pragma  mark 逻辑处理
 //滚动完成之后清空scroll
 
 -(void) pauseScroll{
@@ -133,6 +187,7 @@ UIScrollViewDelegate
     self.currentIndex = self.nextIndex;
     
     self.currentImageView.image = self.otherImageView.image;
+    self.currentImageLabel.text = self.otherImageLabel.text; // 更换标题
     self.contentOffset = CGPointMake(self.scrollViewWidth, 0);
 }
 
@@ -196,12 +251,20 @@ UIScrollViewDelegate
         self.otherImageView.frame = CGRectMake(0, 0, self.scrollViewWidth, self.scrollViewHeight);
         self.nextIndex = self.currentIndex - 1;
         if(self.nextIndex < 0 ) self.nextIndex = (int)self.scrollImageArray.count - 1;
-   
-
         
     }
     //取出模型->设置图片
     BMNewsContentCellModel *model = (BMNewsContentCellModel *)_scrollImageArray[self.nextIndex];
+    
+    
+    //发送一个通知 让tableview iamgeScrollCell 去改变页数
+    NSNumber *number =  [NSNumber numberWithInt:self.currentIndex];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:number forKey:@"index"];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeIndex" object:self userInfo:dict];
+
+    //设置 标题
+    self.otherImageLabel.text = model.title;
     [self.otherImageView sd_setImageWithURL:[NSURL URLWithString:model.image_url_big]];
 }
 

@@ -43,12 +43,24 @@ UITableViewDataSource
 
 //该 tableView 在 scrollView 中的 x坐标
 @property(nonatomic,assign) CGFloat  tableViewInScrollViewX;
+
+//那个页数被选中的 iv
+@property(nonatomic,weak) UIImageView *pageSelectedImageView;
+
+@property(nonatomic,assign) NSInteger scrollImageCount; //滚动图的数量
 @end
 
 
 
 
 @implementation BMContentTableView
+//页数显示的图片的宽度 高度也是他们
+static const CGFloat   siglePageControlWidth =6.f;
+static const CGFloat   siglePageControlSelectWidth = 8.f;
+//页数图片之间的间隔
+static const CGFloat  pageImageMargin = 8.f;
+//最后一个页数图片 距离右边的距离
+static const CGFloat  lastPageImageMaringRight = 10.f;
 
 
 
@@ -216,6 +228,47 @@ UITableViewDataSource
 }
 
 
+#pragma  mark 图片的页数控件创建
+-(void) createPageControlWithImageArray:(NSArray*)scrollImageArray inCell:(UITableViewCell *)cell{
+    NSLog(@"createPageControl");
+    CGFloat pageControlX = screenWidth -  (scrollImageArray.count * (siglePageControlWidth + pageImageMargin ) - pageImageMargin  + lastPageImageMaringRight);
+    CGFloat pageControlY = (screenWidth * 0.5 * 1/8 - siglePageControlWidth) * 0.5;
+    
+    for (int i = 0 ; i < scrollImageArray.count; i++) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(pageControlX + (siglePageControlWidth + pageImageMargin) * i,screenWidth * 0.5  -  pageControlY-siglePageControlWidth, siglePageControlWidth, siglePageControlWidth)];
+        imageView.image = [UIImage imageNamed:@"list_news_tab_image_background"];
+        NSLog(@"createPageControlx:%f-y:%f",pageControlX + (siglePageControlWidth + pageImageMargin) * i,screenWidth * 0.5  -  pageControlY-siglePageControlWidth);
+        [cell.contentView addSubview:imageView];
+        
+    }
+}
+
+/**
+ * 是当前页数的图片
+ */
+-(void) pageSelectedImageWithImageArray:(NSArray*)scrollImageArray inCell:(UITableViewCell *)cell{
+    self.scrollImageCount = scrollImageArray.count;
+    
+    CGFloat pageControlX = screenWidth -  (scrollImageArray.count * (siglePageControlWidth + pageImageMargin ) - pageImageMargin  + lastPageImageMaringRight);
+    CGFloat pageControlY = (screenWidth * 0.5 * 1/8 - siglePageControlWidth) * 0.5;
+    UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(pageControlX + (siglePageControlWidth + pageImageMargin) * 0 - 1, screenWidth * 0.5 -  pageControlY-siglePageControlWidth - 1, siglePageControlSelectWidth, siglePageControlSelectWidth)];
+    iv.image = [UIImage imageNamed:@"list_news_tab_image_select"];
+    _pageSelectedImageView = iv;
+    
+    //接收通知 页数改变了之后
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeIndex:) name:@"changeIndex" object:nil];;
+    [cell.contentView addSubview:iv];
+}
+-(void)changeIndex:(NSNotification *) no{
+    
+    NSLog(@"changeIndex%@",no.userInfo[@"index"]);
+    NSInteger index =[no.userInfo[@"index"] integerValue];
+        //设置选中那个页数图片
+    
+         CGFloat pageControlX = screenWidth - ( self.scrollImageCount * (siglePageControlWidth + pageImageMargin ) - pageImageMargin  + lastPageImageMaringRight);
+         CGFloat pageControlY = (screenWidth * 0.5 * 1/8 - siglePageControlWidth) * 0.5;
+       _pageSelectedImageView.frame = CGRectMake(pageControlX + (siglePageControlWidth + pageImageMargin) * index - 1.f, screenWidth * 0.5  -  pageControlY-siglePageControlWidth - 1, siglePageControlSelectWidth, siglePageControlSelectWidth);
+}
 
 #pragma mark UITableViewDataSource
 
@@ -223,10 +276,8 @@ UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (_isHasScroll) {
-//        return _contentModel.listCellModelArray.count + 2;
         return  _dataArray.count*20 + 2;
     }
-//    return _contentModel.listCellModelArray.count + 1;
     return _dataArray.count*20 + 1;
 }
 
@@ -265,14 +316,17 @@ UITableViewDataSource
         
             //图片轮播cell
             if (indexPath.row == 1) {
-               
+              
+                
+                
+                
                 NSString *identifier = @"imageScroll";
                 UITableViewCell *imageScrollCell = [tableView dequeueReusableCellWithIdentifier:identifier];
           
                 if (!imageScrollCell) {
                     imageScrollCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
                     
-                    
+                    //创建页数控制视图
                 
                     
                     //发送网络请求 获取到图片滚动视图的json数据
@@ -294,6 +348,10 @@ UITableViewDataSource
                             //将视图添加到cell中
                             [imageScrollCell.contentView addSubview:scrollView];
                             
+                            
+                            //创建页数控制视图
+                            [self createPageControlWithImageArray:modelArray inCell:imageScrollCell];
+                            [self pageSelectedImageWithImageArray:modelArray inCell:imageScrollCell];
                             
                             [self reloadData];
                         });
@@ -318,8 +376,6 @@ UITableViewDataSource
     BMSingleUrlContentModel *model = (BMSingleUrlContentModel *)_dataArray[j];
     //取 model 中的第几个 元素
     NSInteger i  = (indexPath.row - k ) % 20;
-    
-    NSLog(@"lodingUrlString:%@---model%@",_firstUrlString,model.listCellModelArray);
     
     //_contentModel.listCellModelArray[indexPath.row -k ]
     BMNesContentTableViewCell *cell = [BMNesContentTableViewCell newsContentTableViewCellWithContentModel:model.listCellModelArray[i] tableView:self];

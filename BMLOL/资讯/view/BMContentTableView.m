@@ -12,6 +12,9 @@
 #import "BMNesContentTableViewCell.h"
 #import "BMNetworing.h"
 #import "BMScollView.h"
+#import "BMWebVC.h"
+
+
 #import <MJRefresh.h>
 
 
@@ -383,7 +386,7 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
     return cell;
 }
 
-
+#pragma mark UITableViewDelegate
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
@@ -403,6 +406,33 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
     return 80.f;
 }
 
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //取出数据
+    
+    int k  = 1;
+    if (_isHasScroll) {
+        k = 2;
+    }
+    //取__dataArray 中的第几个元素
+    NSInteger j  = (indexPath.row - k ) / 20;
+    BMSingleUrlContentModel *model = (BMSingleUrlContentModel *)_dataArray[j];
+    //取 model 中的第几个 元素
+    NSInteger i  = (indexPath.row - k ) % 20;
+    BMNewsContentCellModel *cellModel = model.listCellModelArray[i];
+    
+    //取到 html 的 url
+    NSString *article_url = [newsUrlPath stringByAppendingString:cellModel.article_url ];
+    NSLog(@"articel_rul:%@",article_url);
+    //创建控制器
+    BMWebVC *webVc = [BMWebVC webViewControllIsViedo:NO WebViewUrlString:@"http://www.baidu.com"];
+    if ([self.webVcDelegate respondsToSelector:@selector(cellClickGoToWithBMConTableView:GoToWBMWebV:)]) {
+        [self.webVcDelegate cellClickGoToWithBMConTableView:self GoToWBMWebV:webVc];
+    }
+    
+}
 
 
 #pragma mark 搜索 cell 可隐藏在 navigationbar 下

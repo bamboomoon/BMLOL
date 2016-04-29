@@ -13,13 +13,15 @@
 #import "BMNewsContentCellModel.h"
 #import "BMContentTableView.h"
 #import "BMNewsLasetNewTbView.h"
+#import "BMvideoBarBtnView.h"
 
 #define  Spacing (screenWidth - 34 - (4*40))/4  //scrollView上btn之间的间隔
 #define   topScrollViewWidth  ([UIScreen mainScreen].bounds.size.width - 34) //scrollview的宽度
 
 @interface BMNewVC()
 <
-UIScrollViewDelegate
+UIScrollViewDelegate,
+BMContentTableViewGoTo //实现 BMContentTableView 的 代理
 >
 
 
@@ -68,6 +70,7 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
 {
     [super viewDidLoad];
    
+    
     [self initTopScrollView]; //创建顶部的视图
     
     
@@ -313,37 +316,50 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     
     //最新
     BMContentTableView *tableview =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c12_list_1.shtml" isHasScroll:YES inScrollViewX:screenWidth * 0];
+    tableview.webVcDelegate = self;
     tableview.frame = CGRectMake(screenWidth * 0,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview];
     
 //  赛事
     
     BMContentTableView *tableview1 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c73_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 1];
+    tableview1.webVcDelegate = self;
     tableview1.frame = CGRectMake(screenWidth * 1,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview1];
 // 活动 //TODO: urlString 有问题
     BMContentTableView *tableview2 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c12_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 2];
+    tableview2.webVcDelegate = self;
     tableview2.frame = CGRectMake(screenWidth * 2,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview2];
 //视频
-    BMContentTableView *tableview3 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c12_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 3];
-    tableview3.frame = CGRectMake(screenWidth * 3,-44, screenWidth, screenHeight-64);
-    [contentSc addSubview:tableview3];
+
+//    BMVideoBarBtnWebView *videoWebView = [BMVideoBarBtnWebView viedoBarBtnWebViewUrlString:@"http://lol.qq.com/m/act/a20150319lolapp/video.htm?APP_BROWSER_VERSION_CODE=1&ios_version=873"];
+//    videoWebView.frame = CGRectMake(screenWidth * 3,44, screenWidth, screenHeight-64-44);
+//    [contentSc addSubview:videoWebView];
+    
+    BMvideoBarBtnView *videoView = [BMvideoBarBtnView viedeoBarBrnView];
+    videoView.frame = CGRectMake(screenWidth * 3,0, screenWidth, screenHeight-64-44);
+    [contentSc addSubview:videoView];
+
 //娱乐
     BMContentTableView *tableview4 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c18_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 4];
+    tableview4.webVcDelegate = self;
     tableview4.frame = CGRectMake(screenWidth * 4,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview4];
 
 //官方
     BMContentTableView *tableview5 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c3_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 5];
+    tableview5.webVcDelegate = self;
     tableview5.frame = CGRectMake(screenWidth * 5,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview5];
 //美女
     BMContentTableView *tableview6 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c17_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 6];
+    tableview6.webVcDelegate = self;
     tableview6.frame = CGRectMake(screenWidth * 6,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview6];
 //攻略
     BMContentTableView *tableview7 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c10_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 7];
+    tableview7.webVcDelegate = self;
     tableview7.frame = CGRectMake(screenWidth * 7,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview7];
     
@@ -387,7 +403,15 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
 
 }
 
+#pragma mark BMContentTableViewGoTo
 
+-(void) cellClickGoToWithBMConTableView:(BMContentTableView *)contentTableView GoToWBMWebV:(BMWebVC *)webVc
+{
+    NSLog(@"过来了%@",webVc);
+    //TODO: 这里出错了
+    [self.navigationController pushViewController:(UIViewController *)webVc animated:YES];
+    
+}
 
 
 @end

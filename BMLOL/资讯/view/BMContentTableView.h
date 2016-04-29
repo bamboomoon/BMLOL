@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class BMContentTableView;
+@class BMWebVC;
+
+@protocol BMContentTableViewGoTo <NSObject>
+
+-(void) cellClickGoToWithBMConTableView:(BMContentTableView *) contentTableView GoToWBMWebV:(BMWebVC *) webVc;
+
+@end
+
 @interface BMContentTableView : UITableView
 
 /**
@@ -28,6 +37,7 @@
  */
 -(UITableViewCell *) createCellTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 
-
+//代理
+@property(nonatomic,unsafe_unretained) id<BMContentTableViewGoTo> webVcDelegate;
 
 @end

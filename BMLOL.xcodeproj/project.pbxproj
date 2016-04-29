@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3D93D37112CA05797B2C21DD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74A60D3E298F244ABC341FFC /* libPods.a */; };
+		4F29E89E1CD346A700BB0128 /* BMVideoBarBtnWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29E89D1CD346A700BB0128 /* BMVideoBarBtnWebView.m */; };
+		4F29E8A11CD34D9400BB0128 /* BMvideoBarBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29E8A01CD34D9400BB0128 /* BMvideoBarBtnView.m */; };
+		4F29E8A41CD3D80C00BB0128 /* BMWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29E8A31CD3D80C00BB0128 /* BMWebVC.m */; };
 		4F3625681CACDF8300D91681 /* BMTopScrollButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3625671CACDF8300D91681 /* BMTopScrollButton.m */; };
 		4F5BDA151C9133C300020DB3 /* BMCustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BDA141C9133C300020DB3 /* BMCustomTextField.m */; };
 		4F6920CA1CB697E40093079A /* NewsTop+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6920C71CB697E40093079A /* NewsTop+CoreDataProperties.m */; };
@@ -51,6 +54,12 @@
 /* Begin PBXFileReference section */
 		1747FD30D6305A6C3CF244E4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		26B4A7D993525BD567EEDC62 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4F29E89C1CD346A700BB0128 /* BMVideoBarBtnWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMVideoBarBtnWebView.h; sourceTree = "<group>"; };
+		4F29E89D1CD346A700BB0128 /* BMVideoBarBtnWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMVideoBarBtnWebView.m; sourceTree = "<group>"; };
+		4F29E89F1CD34D9400BB0128 /* BMvideoBarBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMvideoBarBtnView.h; sourceTree = "<group>"; };
+		4F29E8A01CD34D9400BB0128 /* BMvideoBarBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMvideoBarBtnView.m; sourceTree = "<group>"; };
+		4F29E8A21CD3D80C00BB0128 /* BMWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMWebVC.h; sourceTree = "<group>"; };
+		4F29E8A31CD3D80C00BB0128 /* BMWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMWebVC.m; sourceTree = "<group>"; };
 		4F3625661CACDF8300D91681 /* BMTopScrollButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMTopScrollButton.h; sourceTree = "<group>"; };
 		4F3625671CACDF8300D91681 /* BMTopScrollButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMTopScrollButton.m; sourceTree = "<group>"; };
 		4F5BDA131C9133C300020DB3 /* BMCustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMCustomTextField.h; sourceTree = "<group>"; };
@@ -365,6 +374,8 @@
 			children = (
 				4FD5BEAE1CA8333C00B10EC2 /* BMNewVC.h */,
 				4FD5BEAF1CA8333C00B10EC2 /* BMNewVC.m */,
+				4F29E8A21CD3D80C00BB0128 /* BMWebVC.h */,
+				4F29E8A31CD3D80C00BB0128 /* BMWebVC.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -397,6 +408,10 @@
 				4F6920D01CBA536B0093079A /* BMNesContentTableViewCell.m */,
 				4FC442A31CCBA442002087B0 /* BMNewsLasetNewTbView.h */,
 				4FC442A41CCBA442002087B0 /* BMNewsLasetNewTbView.m */,
+				4F29E89C1CD346A700BB0128 /* BMVideoBarBtnWebView.h */,
+				4F29E89D1CD346A700BB0128 /* BMVideoBarBtnWebView.m */,
+				4F29E89F1CD34D9400BB0128 /* BMvideoBarBtnView.h */,
+				4F29E8A01CD34D9400BB0128 /* BMvideoBarBtnView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -568,11 +583,14 @@
 				4FFB2B741C7C4D2A00395FC3 /* AppDelegate.m in Sources */,
 				4FFB2B711C7C4D2A00395FC3 /* main.m in Sources */,
 				4F6920CA1CB697E40093079A /* NewsTop+CoreDataProperties.m in Sources */,
+				4F29E89E1CD346A700BB0128 /* BMVideoBarBtnWebView.m in Sources */,
 				4F6920CB1CB697E40093079A /* NewsTop.m in Sources */,
 				4FE1D7421CBD2D30006D1AF8 /* BMSingleUrlContentModel.m in Sources */,
+				4F29E8A11CD34D9400BB0128 /* BMvideoBarBtnView.m in Sources */,
 				4F9E29821CB017800042931F /* Model.xcdatamodeld in Sources */,
 				4FD056FF1C8F1C6600286B4D /* BMOtherLoginVc.m in Sources */,
 				4FC442A21CCBA38E002087B0 /* BMScollView.m in Sources */,
+				4F29E8A41CD3D80C00BB0128 /* BMWebVC.m in Sources */,
 				4FD5BEA51CA7063500B10EC2 /* BMNetworing.m in Sources */,
 				4FFB2BAE1C81836900395FC3 /* BMTabBarBtn.m in Sources */,
 				4FD5BEAA1CA82DD700B10EC2 /* BMPackageInfo.m in Sources */,

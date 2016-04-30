@@ -25,7 +25,7 @@
         
         replaceSelf.listCellModelArray = [NSMutableArray array];
         [BMNetworing BMNetworingWithUrlString:urlString commpleWithNSDictionary:^(NSDictionary *jsonData) {
-            NSLog(@"jsondata:%@",jsonData[@"next"]);
+//            NSLog(@"jsondata:%@",jsonData[@"next"]);
             replaceSelf.next =  jsonData[@"next"]  ;
             replaceSelf.this_page_num = [(NSString *)jsonData[@"this_page_num"] integerValue];
             

@@ -15,6 +15,8 @@
 #import "BMNewsLasetNewTbView.h"
 #import "BMvideoBarBtnView.h"
 
+
+
 #define  Spacing (screenWidth - 34 - (4*40))/4  //scrollView上btn之间的间隔
 #define   topScrollViewWidth  ([UIScreen mainScreen].bounds.size.width - 34) //scrollview的宽度
 
@@ -70,7 +72,7 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
 {
     [super viewDidLoad];
    
-    
+    NSLog(@"viewDidLoad%@",self.navigationController.viewControllers);
     [self initTopScrollView]; //创建顶部的视图
     
     
@@ -85,10 +87,9 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
 
 -(void) initTopScrollView{
     //1>uivewitem 创建一个view 来包裹scrollview 和 右边的button
-    UIView *viewItem = [[UIView alloc] init];
-    UINavigationItem *viewnavititem = [[UINavigationItem alloc] init];
-    viewnavititem.titleView  = viewItem;
-    viewnavititem.hidesBackButton = YES; //隐藏这个 item 的 backButton
+    UIView *viewItem = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 44)];
+    self.navigationItem.titleView = viewItem;
+
     
     CGFloat contentSizeWidth = (self.newsTopDataModelArray.count - 1)*Spacing+40*self.newsTopDataModelArray.count+20;
     
@@ -101,14 +102,9 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     topScrollView.alwaysBounceVertical = NO;
     topScrollView.alwaysBounceHorizontal = YES;
     [viewItem addSubview:topScrollView];
-    UINavigationBar *newNavigationBar = self.navigationController.navigationBar;
     
-    [self.navigationController.navigationBar setItems:@[viewnavititem] animated:YES];
     
-    [viewItem mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(newNavigationBar);
-    }];
-    
+
     [topScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(viewItem.mas_left);
         make.right.equalTo(viewItem.mas_right).with.offset(-34);
@@ -164,7 +160,7 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     oneBtn.tag = 0;
     [_topScrollViewBtnArray addObject:oneBtn];
     [oneBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(viewInTopScrollView.mas_left).offset(20);
+        make.left.equalTo(viewInTopScrollView.mas_left).offset(0);
         make.top.equalTo(viewInTopScrollView.mas_top);
         make.bottom.equalTo(viewInTopScrollView.mas_bottom);
         make.width.equalTo(@40);
@@ -179,14 +175,14 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
         [_topScrollViewBtnArray addObject:currentBtn];
         if (i >= 3 ) {
             //按钮被点击之后,需要偏移的x
-            CGFloat offsetXBtnClicked = 20+BtnWidth*i+Spacing*i + BtnWidth*0.5 - topScrollViewWidth * 0.5;
+            CGFloat offsetXBtnClicked = BtnWidth*i+Spacing*i + BtnWidth*0.5 - topScrollViewWidth * 0.5;
             //被点击后居中的按钮执行的block
             if ( (topScrollView.contentSize.width  - offsetXBtnClicked) > topScrollViewWidth) {
                 
                 currentBtn.btnClicked = ^(){
                     [UIView animateWithDuration:0.3f animations:^{
                         
-                        topScrollView.contentOffset = CGPointMake(20+BtnWidth*i+Spacing*i + BtnWidth*0.5 - topScrollViewWidth * 0.5 - 14, 0);
+                        topScrollView.contentOffset = CGPointMake(BtnWidth*i+Spacing*i + BtnWidth*0.5 - topScrollViewWidth * 0.5 - 10 , 0);
                     }];
 
                     [self moveNextBtnIsEnabel];
@@ -407,9 +403,10 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
 
 -(void) cellClickGoToWithBMConTableView:(BMContentTableView *)contentTableView GoToWBMWebV:(BMWebVC *)webVc
 {
-    NSLog(@"过来了%@",webVc);
-    //TODO: 这里出错了
-    [self.navigationController pushViewController:(UIViewController *)webVc animated:YES];
+    
+    ((UIViewController *)webVc).hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:webVc animated:YES];
+
     
 }
 

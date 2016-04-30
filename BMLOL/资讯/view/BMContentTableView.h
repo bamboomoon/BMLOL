@@ -38,6 +38,6 @@
 -(UITableViewCell *) createCellTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 //代理
-@property(nonatomic,unsafe_unretained) id<BMContentTableViewGoTo> webVcDelegate;
+@property(nonatomic,weak) id<BMContentTableViewGoTo> webVcDelegate;
 
 @end

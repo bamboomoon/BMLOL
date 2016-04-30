@@ -35,7 +35,7 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
 //    request.URL.absoluteString
-    NSLog(@"string:%@",request.URL.absoluteString);
+//    NSLog(@"string:%@",request.URL.absoluteString);
     return YES; //string:qtpage://news_detail?url=http://lol.qq.com/m/act/a20150319lolapp/exp_3.htm?iVideoId=26688
 }
 

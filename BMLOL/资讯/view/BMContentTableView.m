@@ -159,7 +159,7 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
         
         
      _contentModel = contentModel;
-        NSLog(@"重新获取数据:%@",contentModel.listCellModelArray);
+//        NSLog(@"重新获取数据:%@",contentModel.listCellModelArray);
         
       
         if (footer) {  //如果是上拉刷新
@@ -174,7 +174,7 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
             }
             [self insertRowsAtIndexPaths:newData withRowAnimation:UITableViewRowAnimationNone];
             
-            NSLog(@"上拉刷新");
+//            NSLog(@"上拉刷新");
             
             
         }else {
@@ -233,14 +233,14 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
 
 #pragma  mark 图片的页数控件创建
 -(void) createPageControlWithImageArray:(NSArray*)scrollImageArray inCell:(UITableViewCell *)cell{
-    NSLog(@"createPageControl");
+//    NSLog(@"createPageControl");
     CGFloat pageControlX = screenWidth -  (scrollImageArray.count * (siglePageControlWidth + pageImageMargin ) - pageImageMargin  + lastPageImageMaringRight);
     CGFloat pageControlY = (screenWidth * 0.5 * 1/8 - siglePageControlWidth) * 0.5;
     
     for (int i = 0 ; i < scrollImageArray.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(pageControlX + (siglePageControlWidth + pageImageMargin) * i,screenWidth * 0.5  -  pageControlY-siglePageControlWidth, siglePageControlWidth, siglePageControlWidth)];
         imageView.image = [UIImage imageNamed:@"list_news_tab_image_background"];
-        NSLog(@"createPageControlx:%f-y:%f",pageControlX + (siglePageControlWidth + pageImageMargin) * i,screenWidth * 0.5  -  pageControlY-siglePageControlWidth);
+//        NSLog(@"createPageControlx:%f-y:%f",pageControlX + (siglePageControlWidth + pageImageMargin) * i,screenWidth * 0.5  -  pageControlY-siglePageControlWidth);
         [cell.contentView addSubview:imageView];
         
     }
@@ -264,7 +264,7 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
 }
 -(void)changeIndex:(NSNotification *) no{
     
-    NSLog(@"changeIndex%@",no.userInfo[@"index"]);
+//    NSLog(@"changeIndex%@",no.userInfo[@"index"]);
     NSInteger index =[no.userInfo[@"index"] integerValue];
         //设置选中那个页数图片
     
@@ -410,6 +410,7 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"didSelectRowAtIndexPath");
     //取出数据
     
     int k  = 1;
@@ -424,15 +425,23 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
     BMNewsContentCellModel *cellModel = model.listCellModelArray[i];
     
     //取到 html 的 url
-    NSString *article_url = [newsUrlPath stringByAppendingString:cellModel.article_url ];
+    
+    NSString *article_url = cellModel.article_url;
+    
+    if(![article_url hasPrefix:@"http://"]){ //不是视频链接 拼接 url
+        article_url = [newsUrlPath stringByAppendingString:article_url];
+    }
     NSLog(@"articel_rul:%@",article_url);
     //创建控制器
-    BMWebVC *webVc = [BMWebVC webViewControllIsViedo:NO WebViewUrlString:@"http://www.baidu.com"];
+    BMWebVC *webVc = [[BMWebVC alloc] init];
+    webVc.urlString = article_url;
+    webVc.isVideo = NO;
     if ([self.webVcDelegate respondsToSelector:@selector(cellClickGoToWithBMConTableView:GoToWBMWebV:)]) {
         [self.webVcDelegate cellClickGoToWithBMConTableView:self GoToWBMWebV:webVc];
     }
     
 }
+
 
 
 #pragma mark 搜索 cell 可隐藏在 navigationbar 下

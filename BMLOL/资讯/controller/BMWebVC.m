@@ -15,31 +15,27 @@ UIWebViewDelegate
 
 @property(nonatomic,weak) UIWebView *webView;
 
-//判断这个控制器中的 webview 是否包含视频
-@property(nonatomic,assign,getter = isVideo) BOOL video;
+
+
 @end
 
 @implementation BMWebVC
 
-
--(instancetype)initWebViewControllIsViedo:(BOOL)isViedo WebViewUrlString:(NSString *) urlString
-{
-    if (self = [super init]) {
-        self.video = isViedo;
-        [self addWebViewUrlString:urlString]; //创建 webview
-        
-        [self addBarBtnItems];
-     
-        self.title = @"资讯详情";
-    }
-    return self;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.navigationController.navigationBar.tintColor = gloabColor;
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:gloabColor,NSForegroundColorAttributeName, nil]];
+//    UITextAttributeTextColor[]
+    self.navigationItem.hidesBackButton = YES;
+    [self addWebViewUrlString:self.urlString]; //创建 webview
+    
+    [self addBarBtnItems];
+    
+    self.title = @"资讯详情";
 }
 
 
-+ (instancetype)webViewControllIsViedo:(BOOL)isViedo WebViewUrlString:(NSString *) urlString
-{
-    return  [[self alloc] initWebViewControllIsViedo:isViedo WebViewUrlString:urlString];
-}
 
 
 #pragma mark 创建这个控制器界面上的一些控件
@@ -57,9 +53,16 @@ UIWebViewDelegate
  *  创建 barBtnItems
  */
 -(void) addBarBtnItems{
+
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_btn_back_normal"] style:UIBarButtonItemStyleDone target:self action:@selector(backItemClick)];
+    [backItem setBackgroundImage:[UIImage imageNamed:@"nav_btn_back_pressed"] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    [self.navigationItem setLeftBarButtonItem:backItem];
+    
+    
     
     NSMutableArray *barBtnItems = [NSMutableArray array];
     //创建分享 barbtnItem
+  
     UIBarButtonItem *shareBtnItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"share_normal"] style:UIBarButtonItemStylePlain target:self action:@selector(shareBarBtnItemClicked)];
     [shareBtnItem setBackgroundImage:[UIImage imageNamed:@"share_pressed"] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
     [barBtnItems addObject:shareBtnItem];
@@ -82,4 +85,14 @@ UIWebViewDelegate
     
 }
 
+-(void) backItemClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+-(void)downloadBtnItemClicked
+{
+    
+}
 @end

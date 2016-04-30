@@ -24,6 +24,7 @@
     self.tabBar.items[3].selectedImage = [UIImage imageNamed:@"tab_icon_more_press"];
     
     self.tabBar.tintColor = [UIColor colorWithRed:68/255.0 green:135/255.0 blue:194/255.0 alpha:1.0];
+    NSLog(@"BMCustomTabBarController:%@",self.navigationController);
     
 }
 

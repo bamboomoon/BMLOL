@@ -10,17 +10,24 @@
 
 @interface BMWebVC : UIViewController
 
-/**
- *
- *  创建控制器
- *  @param isViedo 创建的控制器中 webView 中是否包含视频
- *
- *  @return 创建好的对象
- */
--(instancetype) initWebViewControllIsViedo:(BOOL) isViedo WebViewUrlString:(NSString *) urlString;
+///**
+// *
+// *  创建控制器
+// *  @param isViedo 创建的控制器中 webView 中是否包含视频
+// *
+// *  @return 创建好的对象
+// */
+//-(instancetype) initWebViewControllIsViedo:(BOOL) isViedo WebViewUrlString:(NSString *) urlString;
+//
+////工厂方法
+//+(instancetype) webViewControllIsViedo:(BOOL) isViedo WebViewUrlString:(NSString *) urlString;
 
-//工厂方法
-+(instancetype) webViewControllIsViedo:(BOOL) isViedo WebViewUrlString:(NSString *) urlString;
+
+@property(nonatomic,nonnull,copy) NSString *urlString;
+
+//判断这个控制器中的 webview 是否包含视频
+@property(nonatomic,assign)  BOOL isVideo;
+
 
 
 @end

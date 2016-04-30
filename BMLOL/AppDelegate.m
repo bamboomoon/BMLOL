@@ -20,8 +20,9 @@
     const CGFloat screenWid = [UIScreen mainScreen].bounds.size.width; //定义屏幕的宽度 可再任意地方访问的
     
     
+    UITabBarController *tab = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"customTabBar"];
     
-    //设置 navigation 的主题
+//    //设置 navigation 的主题
     UINavigationBar *mainNaviBar = [UINavigationBar  appearance];
     mainNaviBar.barStyle = UIBarStyleBlack; //设置 barstyle 为黑色，使状态栏高亮
     [mainNaviBar setBackgroundImage:[UIImage imageNamed:@"nav_bar_bg_for_seven"] forBarMetrics:UIBarMetricsDefault];

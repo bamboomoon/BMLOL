@@ -78,7 +78,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="l05-qa-fZg" kind="relationship" relationship="viewControllers" id="dPu-5Q-lel"/>
+                        <segue destination="l05-qa-fZg" kind="relationship" relationship="viewControllers" id="2hy-W8-kCJ"/>
                         <segue destination="vOr-pg-gPQ" kind="relationship" relationship="viewControllers" id="Ndi-C2-BWd"/>
                         <segue destination="5gR-2D-ozo" kind="relationship" relationship="viewControllers" id="kMs-6Q-DbU"/>
                         <segue destination="XjH-3m-Xnc" kind="relationship" relationship="viewControllers" id="vPO-uS-paU"/>
@@ -86,12 +86,12 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jsp-p0-hux" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-624" y="-486"/>
+            <point key="canvasLocation" x="-785" y="-585"/>
         </scene>
         <!--咨询-->
         <scene sceneID="2w2-8c-t5M">
             <objects>
-                <navigationController id="l05-qa-fZg" sceneMemberID="viewController">
+                <navigationController hidesBottomBarWhenPushed="YES" id="l05-qa-fZg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="咨询" image="tab_icon_news_normal" id="4BF-wF-IjS"/>
                     <navigationItem key="navigationItem" id="JP1-nA-Leo"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="goQ-qJ-01m">
@@ -99,14 +99,14 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="JEG-66-CB2" kind="relationship" relationship="rootViewController" id="8jZ-8M-d88"/>
+                        <segue destination="JEG-66-CB2" kind="relationship" relationship="rootViewController" id="9BM-ut-Efd"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Bf-Kh-aB8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="277" y="-1613"/>
+            <point key="canvasLocation" x="83" y="-1605"/>
         </scene>
-        <!--NewVC-->
+        <!--Item-->
         <scene sceneID="h2V-x8-2X0">
             <objects>
                 <viewController id="JEG-66-CB2" customClass="BMNewVC" sceneMemberID="viewController">
@@ -119,11 +119,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="BaV-UY-lf4"/>
                     <navigationItem key="navigationItem" id="8je-hE-NIf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XPb-o3-tNG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967" y="-1613"/>
+            <point key="canvasLocation" x="993" y="-1613"/>
         </scene>
         <!--发现-->
         <scene sceneID="yzt-OA-W1i">
@@ -177,7 +178,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ls4-Ce-Mhz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="142" y="-760"/>
+            <point key="canvasLocation" x="276" y="-764"/>
         </scene>
         <!--好友-->
         <scene sceneID="SeA-XQ-foZ">

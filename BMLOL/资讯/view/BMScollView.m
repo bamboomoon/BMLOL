@@ -104,7 +104,7 @@ UIScrollViewDelegate
 -(void) addTwoImageViewToScrollView{
     
 
-    NSLog(@"addTwoImageViewToScrollView");
+
     
     //创建另一个图片view
     UIImageView *otherimagev =   [[UIImageView alloc] init];

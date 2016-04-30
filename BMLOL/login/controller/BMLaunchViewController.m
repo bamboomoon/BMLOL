@@ -99,7 +99,17 @@
 
 
 -(void) visitorBtnClick:(UIButton *)btn{
-    [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"customTabBar"] animated:YES];
+    
+    UITabBarController *tab = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"customTabBar"];
+    NSLog(@"tab%@",tab);
+//    UIWindow *w  = [[UIWindow alloc] init];
+//    w.rootViewController = tab;
+//    w.windowLevel= UIWindowLevelAlert;
+//    [w makeKeyAndVisible];
+    
+    [UIApplication sharedApplication].keyWindow.rootViewController = tab;
+
+//    [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"customTabBar"] animated:YES];
     
 }
 

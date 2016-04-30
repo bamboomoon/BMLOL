@@ -22,6 +22,8 @@
 #define newsUrlPath   @"http://qt.qq.com/static/pages/news/phone/"
 
 
+#define  gloabColor [UIColor colorWithRed:232.0/255 green:184.0/255 blue:114.0/255 alpha:1.0]
+
 #ifdef __DEBUY__
 #define BMLog(...) NSLog(__VA_ARGS__)
 #else 

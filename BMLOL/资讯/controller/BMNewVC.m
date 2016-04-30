@@ -72,7 +72,9 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
 {
     [super viewDidLoad];
    
-    NSLog(@"viewDidLoad%@",self.navigationController.viewControllers);
+    //注册 图片轮播视图中 按钮被点击的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewBtnClick:) name:@"scrollViewBtnClick" object:nil];;
+    
     [self initTopScrollView]; //创建顶部的视图
     
     
@@ -406,9 +408,13 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     
     ((UIViewController *)webVc).hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:webVc animated:YES];
-
-    
 }
 
+#pragma mark 图片轮播 按钮被点击的回调方法
+-(void) scrollViewBtnClick:(NSNotification *) notification
+{
+   BMWebVC *webvc = notification.userInfo[@"webVc"];
+   [self.navigationController pushViewController:webvc animated:YES];
+}
 
 @end

@@ -29,5 +29,9 @@ navigation
 ![](/Users/donglei/Documents/Ios/BMLOL4.4.0/readmeImage/Simulator Screen Shot 2016年4月27日 下午6.14.22.png
 )
 
-
+**4.30**
+* 更改资讯 nagationitem 中的 titleVIew 策略
+* 完善 咨询详情
+* 增加 轮播视图 被点击事件（通过 NSNotificationCenter）
+* **尝试去抓取视频的链接，但是未果**。 原因:需要验证 手机平台 和 cookie.下次再尝试
 

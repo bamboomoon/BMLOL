@@ -42,11 +42,13 @@ UIWebViewDelegate
 
 -(void) addWebViewUrlString:(NSString *) urlString{
     //创建webview
-
+//var video = doucment.getElemtById(\"tenvideo_video_player_0\");alert(video.src)
         UIWebView *webV = [[UIWebView alloc] init];
+    webV.delegate = self;
         self.view = webV;
         [webV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
 
+    
 }
 
 /**
@@ -94,5 +96,18 @@ UIWebViewDelegate
 -(void)downloadBtnItemClicked
 {
     
+}
+
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    
+    NSLog(@"webView%@ %@,",[request.URL relativeString],request);
+    return  YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    
+
 }
 @end

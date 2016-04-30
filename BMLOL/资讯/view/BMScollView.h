@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class  BMWebVC;
+@protocol BMScrollViewDelegate <NSObject>
+
+@required
+-(void) bmScrollViewDelegateScrollBtnClickWithBMWebVc:(BMWebVC *) webVc;
+
+@end
+
+
 @interface BMScollView : UIScrollView
 
 
@@ -25,5 +34,7 @@
 
 +(instancetype)BMScrollImages:(NSArray *)scrollImageUrlArray offest:(CGPoint) offets scrollViewSize:(CGSize) scrollViewSize;
 
+
+@property(nonatomic,unsafe_unretained) id<BMScrollViewDelegate> bmScrollVideDelegate;
 
 @end

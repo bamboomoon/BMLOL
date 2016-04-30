@@ -26,7 +26,8 @@
     UINavigationBar *mainNaviBar = [UINavigationBar  appearance];
     mainNaviBar.barStyle = UIBarStyleBlack; //设置 barstyle 为黑色，使状态栏高亮
     [mainNaviBar setBackgroundImage:[UIImage imageNamed:@"nav_bar_bg_for_seven"] forBarMetrics:UIBarMetricsDefault];
-    
+    mainNaviBar.tintColor = gloabColor;
+    [mainNaviBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:gloabColor,NSForegroundColorAttributeName, nil]];
     
     //获取顶部的数据
     NSManagedObjectContext *context =  self.managedObjectContext;

@@ -8,7 +8,8 @@
 
 #import "BMScollView.h"
 #import "BMNewsContentCellModel.h"
-#import "UIImageView+WebCache.h"
+#import "UIButton+WebCache.h"
+#import "BMWebVC.h"
 
 
 typedef NS_ENUM(NSInteger,Direction){
@@ -33,9 +34,9 @@ UIScrollViewDelegate
 
 @property(nonatomic,assign) CGFloat scrollViewHeight;  //滚动视图的高度
 
-@property(nonatomic,weak) UIImageView *currentImageView;     //当前显示在屏幕上的图片
+@property(nonatomic,weak) UIButton *currentBtn;     //当前显示在屏幕上的图片
 
-@property(nonatomic,weak) UIImageView  *otherImageView;     //另外一个显示在屏幕上的图片
+@property(nonatomic,weak) UIButton  *otherBtn;     //另外一个显示在屏幕上的图片
 
 
 @property(nonatomic,assign) int  currentIndex;  //显示在屏幕上的那张图片在图片数组中位置
@@ -107,13 +108,17 @@ UIScrollViewDelegate
 
     
     //创建另一个图片view
-    UIImageView *otherimagev =   [[UIImageView alloc] init];
-    otherimagev.frame = CGRectMake(self.scrollViewWidth, 0, self.scrollViewWidth, self.scrollViewHeight);
-    self.otherImageView = otherimagev;
-    [self addSubview:otherimagev];
+
+    
+    UIButton *otherBtn  = [[UIButton alloc] init];
+    otherBtn.frame = CGRectMake(self.scrollViewWidth, 0, self.scrollViewWidth, self.scrollViewHeight);
+    self.otherBtn = otherBtn;
+    [self addSubview:otherBtn];
+   
     //创建承载 label的 view
     UIView *otherView = [self createViewWithLabel];
-    [otherimagev addSubview:otherView];
+    [otherBtn addSubview:otherView];
+
     //添加 label
     UILabel * label = [self createLabelInImage];
     _otherImageLabel = label;
@@ -125,18 +130,20 @@ UIScrollViewDelegate
     //创建当前的图片view
     //取出数组中的模型
     BMNewsContentCellModel *model0 = (BMNewsContentCellModel*)_scrollImageArray[0];
-     UIImageView *cuimagev =   [[UIImageView alloc] init];
-    cuimagev.frame = CGRectMake(self.scrollViewWidth, 0, self.scrollViewWidth, self.scrollViewHeight);
-    [cuimagev sd_setImageWithURL:[NSURL URLWithString:model0.image_url_big]];
 
     
-    self.currentImageView = cuimagev;
-    [self addSubview:cuimagev];
+    UIButton *currentBtn = [[UIButton alloc] init];
+    currentBtn.frame = CGRectMake(self.scrollViewWidth, 0, self.scrollViewWidth, self.scrollViewHeight);
+    [currentBtn addTarget:self action:@selector(currentBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [currentBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:model0.image_url_big] forState:UIControlStateNormal];
+    self.currentBtn = currentBtn;
+    [self addSubview:currentBtn];
+    
     self.currentIndex = 0;
     
     //创建 view
     UIView *cuiView = [self createViewWithLabel];
-    [cuimagev addSubview:cuiView];
+    [currentBtn addSubview:cuiView];
     //添加 label
     UILabel *label2 = [self createLabelInImage];
     self.currentImageLabel = label2;
@@ -186,7 +193,7 @@ UIScrollViewDelegate
     
     self.currentIndex = self.nextIndex;
     
-    self.currentImageView.image = self.otherImageView.image;
+    [self.currentBtn setBackgroundImage:self.otherBtn.currentBackgroundImage forState:UIControlStateNormal];
     self.currentImageLabel.text = self.otherImageLabel.text; // 更换标题
     self.contentOffset = CGPointMake(self.scrollViewWidth, 0);
 }
@@ -239,7 +246,7 @@ UIScrollViewDelegate
     if (change[NSKeyValueChangeNewKey] == change[NSKeyValueChangeOldKey]) return;  //没有滚动
     
     if([change[NSKeyValueChangeNewKey] intValue] == DirectionLeft){  //向左滚动
-        self.otherImageView.frame = CGRectMake(self.scrollViewWidth * 2, 0, self.scrollViewWidth, self.scrollViewHeight);
+        self.otherBtn.frame = CGRectMake(self.scrollViewWidth * 2, 0, self.scrollViewWidth, self.scrollViewHeight);
         
         self.nextIndex = self.currentIndex + 1;
         if (self.nextIndex >= self.scrollImageArray.count) {
@@ -248,7 +255,7 @@ UIScrollViewDelegate
 
         
     }else if ([change[NSKeyValueChangeNewKey] intValue]==  DirectionRight){  //向右滚动
-        self.otherImageView.frame = CGRectMake(0, 0, self.scrollViewWidth, self.scrollViewHeight);
+        self.otherBtn.frame = CGRectMake(0, 0, self.scrollViewWidth, self.scrollViewHeight);
         self.nextIndex = self.currentIndex - 1;
         if(self.nextIndex < 0 ) self.nextIndex = (int)self.scrollImageArray.count - 1;
         
@@ -265,7 +272,7 @@ UIScrollViewDelegate
 
     //设置 标题
     self.otherImageLabel.text = model.title;
-    [self.otherImageView sd_setImageWithURL:[NSURL URLWithString:model.image_url_big]];
+    [self.otherBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:model.image_url_big] forState:UIControlStateNormal];
 }
 
 
@@ -284,5 +291,20 @@ UIScrollViewDelegate
 
 -(void) nextPage{
     [self setContentOffset:CGPointMake(self.scrollViewWidth * 2 , 0) animated:YES];
+}
+
+-(void) currentBtnClicked:(UIButton *) btnClicked{
+    BMNewsContentCellModel *model = (BMNewsContentCellModel*)_scrollImageArray[self.currentIndex];
+
+    BMWebVC *webVc = [[BMWebVC alloc] init];
+    webVc.urlString = [newsUrlPath stringByAppendingString:model.article_url ];
+    webVc.isVideo = NO;
+    webVc.hidesBottomBarWhenPushed = YES;
+    
+    //发送通知 在 BMNewVc 中接收
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"scrollViewBtnClick" object:nil userInfo:[NSDictionary dictionaryWithObjectsAndKeys:webVc,@"webVc", nil]];
+  
+    
+    
 }
 @end

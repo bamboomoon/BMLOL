@@ -10,11 +10,13 @@
 
 @class BMContentTableView;
 @class BMWebVC;
+@class BMSearchViewController;
 
 @protocol BMContentTableViewGoTo <NSObject>
 
 -(void) cellClickGoToWithBMConTableView:(BMContentTableView *) contentTableView GoToWBMWebV:(BMWebVC *) webVc;
 
+-(void) bmContentTable:(BMContentTableView *) contentTableView GotoBMSearchVC:(BMSearchViewController *) serchVc;
 @end
 
 @interface BMContentTableView : UITableView

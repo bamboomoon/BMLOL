@@ -410,6 +410,11 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     [self.navigationController pushViewController:webVc animated:YES];
 }
 
+-(void) bmContentTable:(BMContentTableView *)contentTableView GotoBMSearchVC:(BMSearchViewController *)serchVc
+{
+    [self.navigationController pushViewController:serchVc animated:YES];
+}
+
 #pragma mark 图片轮播 按钮被点击的回调方法
 -(void) scrollViewBtnClick:(NSNotification *) notification
 {

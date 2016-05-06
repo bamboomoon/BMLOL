@@ -13,6 +13,8 @@
 #import "BMNetworing.h"
 #import "BMScollView.h"
 #import "BMWebVC.h"
+#import "BMSearchViewController.h"
+
 
 
 #import <MJRefresh.h>
@@ -295,8 +297,11 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
             
             cell = [[UITableViewCell alloc ] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"searchCell"];
             cell.backgroundColor = [UIColor colorWithRed:229.0/255 green:229.0/255 blue:229.0/255 alpha:1.0];
+
             
             UISearchBar *searchBar = [[UISearchBar alloc] init];
+            searchBar.userInteractionEnabled = NO; //不允许用户交互，直接跳转...
+            
             searchBar.layer.cornerRadius = 6.f;
             searchBar.layer.masksToBounds = YES;
             searchBar.backgroundImage  = [UIImage imageNamed:@"search_item_bg"];
@@ -410,7 +415,12 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"didSelectRowAtIndexPath");
+ 
+   
+    
+    if (indexPath.row != 0) {
+        
+    
     //取出数据
     
     int k  = 1;
@@ -438,6 +448,17 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
     webVc.isVideo = NO;
     if ([self.webVcDelegate respondsToSelector:@selector(cellClickGoToWithBMConTableView:GoToWBMWebV:)]) {
         [self.webVcDelegate cellClickGoToWithBMConTableView:self GoToWBMWebV:webVc];
+    }
+    }
+    
+    else { //搜索 cell，图片滚动 cell 不可交互，所以当滚动 cell 被点击之后，不会在这里调用
+        if ([self.webVcDelegate respondsToSelector:@selector(bmContentTable:GotoBMSearchVC:)]) {
+            BMSearchViewController *serchVc = [[BMSearchViewController alloc] init];
+            serchVc.hidesBottomBarWhenPushed = YES;
+     
+            
+            [self.webVcDelegate bmContentTable:self GotoBMSearchVC:serchVc];
+        }
     }
     
 }

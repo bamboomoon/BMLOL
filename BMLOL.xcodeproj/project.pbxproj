@@ -11,6 +11,11 @@
 		4F29E89E1CD346A700BB0128 /* BMVideoBarBtnWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29E89D1CD346A700BB0128 /* BMVideoBarBtnWebView.m */; };
 		4F29E8A11CD34D9400BB0128 /* BMvideoBarBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29E8A01CD34D9400BB0128 /* BMvideoBarBtnView.m */; };
 		4F29E8A41CD3D80C00BB0128 /* BMWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29E8A31CD3D80C00BB0128 /* BMWebVC.m */; };
+		4F29E8AD1CD72DE800BB0128 /* BMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29E8AC1CD72DE800BB0128 /* BMSearchViewController.m */; };
+		4F29E8B31CD7401400BB0128 /* BMSearchTv.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29E8B21CD7401400BB0128 /* BMSearchTv.m */; };
+		4F29E8B81CD8E41400BB0128 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F29E8B71CD8E41400BB0128 /* libsqlite3.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
+		4F29E8BB1CD8E74D00BB0128 /* BMSearchRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29E8BA1CD8E74D00BB0128 /* BMSearchRecordModel.m */; };
+		4F29E8BE1CD8FD4F00BB0128 /* BMSearchRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29E8BD1CD8FD4F00BB0128 /* BMSearchRecordCell.m */; };
 		4F3625681CACDF8300D91681 /* BMTopScrollButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3625671CACDF8300D91681 /* BMTopScrollButton.m */; };
 		4F5BDA151C9133C300020DB3 /* BMCustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BDA141C9133C300020DB3 /* BMCustomTextField.m */; };
 		4F6920CA1CB697E40093079A /* NewsTop+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6920C71CB697E40093079A /* NewsTop+CoreDataProperties.m */; };
@@ -60,6 +65,15 @@
 		4F29E8A01CD34D9400BB0128 /* BMvideoBarBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMvideoBarBtnView.m; sourceTree = "<group>"; };
 		4F29E8A21CD3D80C00BB0128 /* BMWebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMWebVC.h; sourceTree = "<group>"; };
 		4F29E8A31CD3D80C00BB0128 /* BMWebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMWebVC.m; sourceTree = "<group>"; };
+		4F29E8AB1CD72DE800BB0128 /* BMSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMSearchViewController.h; sourceTree = "<group>"; };
+		4F29E8AC1CD72DE800BB0128 /* BMSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMSearchViewController.m; sourceTree = "<group>"; };
+		4F29E8B11CD7401400BB0128 /* BMSearchTv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMSearchTv.h; sourceTree = "<group>"; };
+		4F29E8B21CD7401400BB0128 /* BMSearchTv.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMSearchTv.m; sourceTree = "<group>"; };
+		4F29E8B71CD8E41400BB0128 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		4F29E8B91CD8E74D00BB0128 /* BMSearchRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMSearchRecordModel.h; sourceTree = "<group>"; };
+		4F29E8BA1CD8E74D00BB0128 /* BMSearchRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMSearchRecordModel.m; sourceTree = "<group>"; };
+		4F29E8BC1CD8FD4F00BB0128 /* BMSearchRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMSearchRecordCell.h; sourceTree = "<group>"; };
+		4F29E8BD1CD8FD4F00BB0128 /* BMSearchRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMSearchRecordCell.m; sourceTree = "<group>"; };
 		4F3625661CACDF8300D91681 /* BMTopScrollButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMTopScrollButton.h; sourceTree = "<group>"; };
 		4F3625671CACDF8300D91681 /* BMTopScrollButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMTopScrollButton.m; sourceTree = "<group>"; };
 		4F5BDA131C9133C300020DB3 /* BMCustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMCustomTextField.h; sourceTree = "<group>"; };
@@ -120,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F29E8B81CD8E41400BB0128 /* libsqlite3.tbd in Frameworks */,
 				4F9E29841CB017D90042931F /* CoreData.framework in Frameworks */,
 				3D93D37112CA05797B2C21DD /* libPods.a in Frameworks */,
 				4FDD08F61C8B5A5A00139EE6 /* Reveal.framework in Frameworks */,
@@ -139,6 +154,7 @@
 		319A06FE6FC8D054320558F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F29E8B71CD8E41400BB0128 /* libsqlite3.tbd */,
 				4F9E29831CB017D90042931F /* CoreData.framework */,
 				4FDD08F51C8B5A5A00139EE6 /* Reveal.framework */,
 				74A60D3E298F244ABC341FFC /* libPods.a */,
@@ -376,6 +392,8 @@
 				4FD5BEAF1CA8333C00B10EC2 /* BMNewVC.m */,
 				4F29E8A21CD3D80C00BB0128 /* BMWebVC.h */,
 				4F29E8A31CD3D80C00BB0128 /* BMWebVC.m */,
+				4F29E8AB1CD72DE800BB0128 /* BMSearchViewController.h */,
+				4F29E8AC1CD72DE800BB0128 /* BMSearchViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -391,6 +409,8 @@
 				4F6920D31CBA53EC0093079A /* BMNewsContentCellModel.m */,
 				4FE1D7401CBD2D30006D1AF8 /* BMSingleUrlContentModel.h */,
 				4FE1D7411CBD2D30006D1AF8 /* BMSingleUrlContentModel.m */,
+				4F29E8B91CD8E74D00BB0128 /* BMSearchRecordModel.h */,
+				4F29E8BA1CD8E74D00BB0128 /* BMSearchRecordModel.m */,
 			);
 			path = mode;
 			sourceTree = "<group>";
@@ -412,6 +432,10 @@
 				4F29E89D1CD346A700BB0128 /* BMVideoBarBtnWebView.m */,
 				4F29E89F1CD34D9400BB0128 /* BMvideoBarBtnView.h */,
 				4F29E8A01CD34D9400BB0128 /* BMvideoBarBtnView.m */,
+				4F29E8B11CD7401400BB0128 /* BMSearchTv.h */,
+				4F29E8B21CD7401400BB0128 /* BMSearchTv.m */,
+				4F29E8BC1CD8FD4F00BB0128 /* BMSearchRecordCell.h */,
+				4F29E8BD1CD8FD4F00BB0128 /* BMSearchRecordCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -583,7 +607,9 @@
 				4FFB2B741C7C4D2A00395FC3 /* AppDelegate.m in Sources */,
 				4FFB2B711C7C4D2A00395FC3 /* main.m in Sources */,
 				4F6920CA1CB697E40093079A /* NewsTop+CoreDataProperties.m in Sources */,
+				4F29E8BE1CD8FD4F00BB0128 /* BMSearchRecordCell.m in Sources */,
 				4F29E89E1CD346A700BB0128 /* BMVideoBarBtnWebView.m in Sources */,
+				4F29E8B31CD7401400BB0128 /* BMSearchTv.m in Sources */,
 				4F6920CB1CB697E40093079A /* NewsTop.m in Sources */,
 				4FE1D7421CBD2D30006D1AF8 /* BMSingleUrlContentModel.m in Sources */,
 				4F29E8A11CD34D9400BB0128 /* BMvideoBarBtnView.m in Sources */,
@@ -594,6 +620,7 @@
 				4FD5BEA51CA7063500B10EC2 /* BMNetworing.m in Sources */,
 				4FFB2BAE1C81836900395FC3 /* BMTabBarBtn.m in Sources */,
 				4FD5BEAA1CA82DD700B10EC2 /* BMPackageInfo.m in Sources */,
+				4F29E8BB1CD8E74D00BB0128 /* BMSearchRecordModel.m in Sources */,
 				4F6920D11CBA536B0093079A /* BMNesContentTableViewCell.m in Sources */,
 				4FFB2BAB1C814C8600395FC3 /* BMCustomTabBarController.m in Sources */,
 				4F5BDA151C9133C300020DB3 /* BMCustomTextField.m in Sources */,
@@ -604,6 +631,7 @@
 				4F6920D41CBA53EC0093079A /* BMNewsContentCellModel.m in Sources */,
 				4FD5BEB01CA8333C00B10EC2 /* BMNewVC.m in Sources */,
 				4FDD08FD1C8C127800139EE6 /* BMLaunchViewController.m in Sources */,
+				4F29E8AD1CD72DE800BB0128 /* BMSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

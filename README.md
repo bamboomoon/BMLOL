@@ -40,4 +40,9 @@ navigation
 * 使用 sqlite 完成搜索历史记录
 * 处理了相应的逻辑
 
+**5.8**
+* 处理完搜索，可以显示出搜索结果。
+* 可以从搜索结果跳转到 webVC
+* 完成 searchTableView 的逻辑处理
+
 

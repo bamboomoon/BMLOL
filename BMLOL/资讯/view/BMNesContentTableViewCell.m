@@ -37,7 +37,7 @@
         cell = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
        
         __weak typeof(cell) replaceCell = cell;  //防止循环引用
-        
+        NSLog(@"创建 cell");
    
       
         //创建图片视图

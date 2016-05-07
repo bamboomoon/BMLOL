@@ -23,6 +23,7 @@
 		4F6920CE1CBA51CE0093079A /* BMContentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6920CD1CBA51CE0093079A /* BMContentTableView.m */; };
 		4F6920D11CBA536B0093079A /* BMNesContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6920D01CBA536B0093079A /* BMNesContentTableViewCell.m */; };
 		4F6920D41CBA53EC0093079A /* BMNewsContentCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6920D31CBA53EC0093079A /* BMNewsContentCellModel.m */; };
+		4F766AD41CDE3B5800B3513D /* BMSearchResultTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F766AD31CDE3B5800B3513D /* BMSearchResultTableView.m */; };
 		4F9E29821CB017800042931F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E29801CB017800042931F /* Model.xcdatamodeld */; };
 		4F9E29841CB017D90042931F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9E29831CB017D90042931F /* CoreData.framework */; };
 		4FAA91ED1C9EEEC80043A2AF /* BMHeroListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA91EC1C9EEEC80043A2AF /* BMHeroListModel.m */; };
@@ -88,6 +89,8 @@
 		4F6920D01CBA536B0093079A /* BMNesContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMNesContentTableViewCell.m; sourceTree = "<group>"; };
 		4F6920D21CBA53EC0093079A /* BMNewsContentCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMNewsContentCellModel.h; sourceTree = "<group>"; };
 		4F6920D31CBA53EC0093079A /* BMNewsContentCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMNewsContentCellModel.m; sourceTree = "<group>"; };
+		4F766AD21CDE3B5800B3513D /* BMSearchResultTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMSearchResultTableView.h; sourceTree = "<group>"; };
+		4F766AD31CDE3B5800B3513D /* BMSearchResultTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMSearchResultTableView.m; sourceTree = "<group>"; };
 		4F9E29811CB017800042931F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		4F9E29831CB017D90042931F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		4FAA91EB1C9EEEC80043A2AF /* BMHeroListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMHeroListModel.h; sourceTree = "<group>"; };
@@ -436,6 +439,8 @@
 				4F29E8B21CD7401400BB0128 /* BMSearchTv.m */,
 				4F29E8BC1CD8FD4F00BB0128 /* BMSearchRecordCell.h */,
 				4F29E8BD1CD8FD4F00BB0128 /* BMSearchRecordCell.m */,
+				4F766AD21CDE3B5800B3513D /* BMSearchResultTableView.h */,
+				4F766AD31CDE3B5800B3513D /* BMSearchResultTableView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -630,6 +635,7 @@
 				4FAA91ED1C9EEEC80043A2AF /* BMHeroListModel.m in Sources */,
 				4F6920D41CBA53EC0093079A /* BMNewsContentCellModel.m in Sources */,
 				4FD5BEB01CA8333C00B10EC2 /* BMNewVC.m in Sources */,
+				4F766AD41CDE3B5800B3513D /* BMSearchResultTableView.m in Sources */,
 				4FDD08FD1C8C127800139EE6 /* BMLaunchViewController.m in Sources */,
 				4F29E8AD1CD72DE800BB0128 /* BMSearchViewController.m in Sources */,
 			);

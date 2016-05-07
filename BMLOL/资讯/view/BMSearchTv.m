@@ -260,7 +260,45 @@
     return 0.1f;
 }
 
+//垃圾代码 不想改了。。。
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+   UITableViewCell * cell =  [self cellForRowAtIndexPath:indexPath];
+    NSDictionary *d = [NSDictionary dictionaryWithObject:cell.textLabel.text forKey:@"keyWord"];
+    if ([self numberOfSections]  == 2 ) {
+        if (indexPath.section == 0) {
+            if (self.isShowAllRecord) {
+                if (indexPath.row == _searchRecordArray.count) {
+                   
+                }else{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"beginSearch" object:self userInfo:d];
+                }
+            }else {
+                if (indexPath.row == 2) {
+                    
+                }else {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"beginSearch" object:self userInfo:d];
+                }
+            }
+            
+        }
+        else {
+            if (indexPath.row == 0) {
+                
+            }else {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"beginSearch" object:self userInfo:d];
+            }
+        }
+    }else{ //只有一组
+        if (indexPath.row == 0) {
+            
+        }else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"beginSearch" object:self userInfo:d];
+        }
+    }
+
+}
 
 
 #pragma mark 删除历史数据的辅助视图 点击事件

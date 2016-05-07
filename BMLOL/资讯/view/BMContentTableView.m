@@ -174,7 +174,7 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_allCellCount + i inSection:0];
                 [newData addObject:indexPath];
             }
-            [self insertRowsAtIndexPaths:newData withRowAnimation:UITableViewRowAnimationNone];
+            [self insertRowsAtIndexPaths:newData withRowAnimation:UITableViewRowAnimationBottom];
             
 //            NSLog(@"上拉刷新");
             

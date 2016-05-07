@@ -9,10 +9,12 @@
 #import "BMSearchViewController.h"
 #import "BMSearchTv.h"
 #import "BMSearchRecordModel.h"
+#import "BMSearchResultTableView.h"
 
 @interface BMSearchViewController ()
 <
-    UISearchBarDelegate
+    UISearchBarDelegate,
+    BMSearchResultTableViewDelegate
 >
 
 
@@ -21,6 +23,11 @@
 
 //搜索记录 tableView
 @property (nonatomic,weak) BMSearchTv *searchTableView;
+
+//搜索结果 tableView
+@property(nonatomic,weak) BMSearchResultTableView *resultTableView;
+
+@property(nonatomic,assign) BOOL isShowResultTableViwe;
 
 @end
 
@@ -31,7 +38,17 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.view.backgroundColor = [UIColor redColor];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginSearch:) name:@"beginSearch" object:nil];
+    
+    //创建搜索结果
+    BMSearchResultTableView *resultTableView = [[BMSearchResultTableView alloc] init];
+    resultTableView.frame = CGRectMake(0, 64, screenWidth, screenHeight-64);
+    self.resultTableView = resultTableView;
+    resultTableView.searchResulteDelegate = self;
+    [self.view addSubview:resultTableView];
+    resultTableView.hidden = YES; //一上来就隐藏
+    
+    
     //创建 tableView
     BMSearchTv *searchTableView = [BMSearchTv searchTableViewWithHotSearchUrlString:@"http://qt.qq.com/php_cgi/news/varcache_search_hot.php?plat=ios&version=3" frame:CGRectMake(0, 64, screenWidth, screenHeight-64)];
     self.searchTableView = searchTableView;
@@ -58,38 +75,74 @@
 
 #pragma mark UISearchBarDelegate
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
- 
-    NSLog(@"searchBarSearchButtonClicked:%@",searchBar.text);
+
+-(void) beginSearch:(NSNotification*) notification{
+   NSString *keyWord = notification.userInfo[@"keyWord"];
+ [self serchKeyWord:keyWord];
+    self.searchBar.text = keyWord;
+}
+
+
+-(void) serchKeyWord:(NSString *) keyWord{
     //保存搜索记录
     BMSearchRecordModel *searchRecordModel = [BMSearchRecordModel getShareInstace];
-    [searchRecordModel saveDataName:searchBar.text];
+    [searchRecordModel saveDataName:keyWord];
     
     self.searchTableView.searchRecordArray = [searchRecordModel findSearch];
-    NSLog(@"增加%lu",self.searchTableView.searchRecordArray.count);
+  
     if (self.searchTableView.searchRecordArray.count > 2) {
         self.searchTableView.isShowAllRecord = YES;
     }
     [self.searchTableView reloadData];
     
-    //TODO: 显示搜索结果 tableView
     
+    self.resultTableView.keyWord  = keyWord;
+    self.resultTableView.hidden = NO;
+    self.searchTableView.hidden = YES;
+    self.isShowResultTableViwe = YES;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"searchChange" object:self];
+    [self.searchBar resignFirstResponder];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+ 
+    [self serchKeyWord:searchBar.text];
+
+
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    
     //pop
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
-    NSLog(@"searchBarTextDidEndEditing");
+  
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    NSLog(@"searchText %@",searchText);
+    if ([searchBar.text isEqualToString:@""]) {
+        //获得第一响应
+        [searchBar becomeFirstResponder];
+        //数据置空
+        self.resultTableView.dataModelArray = nil;
+        //显示搜索记录 table 隐藏搜索结果
+        
+        if (self.isShowResultTableViwe) {
+            self.resultTableView.hidden = YES;
+            self.searchTableView.hidden = NO;
+            
+            self.isShowResultTableViwe = NO;
+        }
+    }
 }
 
+
+#pragma mark BMSearchResultTableViewDelegate
+-(void) BMSearchResultTableView:(BMSearchResultTableView *)searchResultTableView WebVc:(BMWebVC *)webVc{
+    
+    [self.navigationController pushViewController:webVc animated:YES];
+}
 
 @end

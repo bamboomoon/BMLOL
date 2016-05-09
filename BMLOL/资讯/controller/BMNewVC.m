@@ -422,4 +422,9 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
    [self.navigationController pushViewController:webvc animated:YES];
 }
 
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 @end

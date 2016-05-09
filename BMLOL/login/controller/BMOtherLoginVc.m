@@ -249,4 +249,9 @@
     _passTextField.text = nil;
     _passRightCloseBtn.hidden = YES;
 }
+
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

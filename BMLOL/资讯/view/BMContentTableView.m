@@ -491,5 +491,9 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
 }
 
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 @end

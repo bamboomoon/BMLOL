@@ -16,7 +16,10 @@ UIWebViewDelegate
 @property(nonatomic,weak) UIWebView *webView;
 
 
+//进度条
+@property(nonatomic,weak) UIProgressView *progressView;
 
+@property(nonatomic,strong) NSTimer *timer;
 @end
 
 @implementation BMWebVC
@@ -33,6 +36,11 @@ UIWebViewDelegate
     [self addBarBtnItems];
     
     self.title = @"资讯详情";
+    
+    UIProgressView *progressview = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 64, screenWidth, 10)];
+    self.progressView = progressview;
+    progressview.progressTintColor = [UIColor blueColor];
+    [self.view addSubview:progressview];
 }
 
 
@@ -102,12 +110,34 @@ UIWebViewDelegate
 {
     
     NSLog(@"webView%@ %@,",[request.URL relativeString],request);
+    if ([[request.URL relativeString] hasPrefix:@"http://"]) {
+        
+        self.progressView.progress = 0.3f;
+    }
     return  YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.05f target:self selector:@selector(addProgress) userInfo:nil repeats:YES];
+    self.timer  = timer;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+    self.progressView.progress = 1.0f;
+    self.progressView.hidden = YES;
 
+}
+-(void) addProgress{
+    if (self.progressView.progress == 0.7f) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }else {
+        self.progressView.progress += 0.05f;
+    }
 }
 @end

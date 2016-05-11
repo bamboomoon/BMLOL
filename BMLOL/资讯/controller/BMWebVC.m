@@ -19,7 +19,11 @@ UIWebViewDelegate
 //进度条
 @property(nonatomic,weak) UIProgressView *progressView;
 
-@property(nonatomic,strong) NSTimer *timer;
+@property(nonatomic,weak) NSTimer *timer;
+
+@property(nonatomic,copy) NSString *loadUrlString;
+
+@property(nonatomic,assign) BOOL isConLoad;  //解决在有视频的 webview 多次创建 nstimer 问题
 @end
 
 @implementation BMWebVC
@@ -43,7 +47,11 @@ UIWebViewDelegate
     [self.view addSubview:progressview];
 }
 
-
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear: animated];
+    [self.timer invalidate];
+    self.timer = nil;
+}
 
 
 #pragma mark 创建这个控制器界面上的一些控件
@@ -109,35 +117,62 @@ UIWebViewDelegate
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     
-    NSLog(@"webView%@ %@,",[request.URL relativeString],request);
+
     if ([[request.URL relativeString] hasPrefix:@"http://"]) {
+        self.loadUrlString = [request.URL relativeString];
+  
         
-        self.progressView.progress = 0.3f;
+          [UIView animateWithDuration:1.f animations:^{
+              self.progressView.progress = 0.3f;
+          }];
     }
     return  YES;
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.05f target:self selector:@selector(addProgress) userInfo:nil repeats:YES];
-    self.timer  = timer;
+ 
+    if ([self.loadUrlString hasPrefix:@"http://"]){
+        if(!self.isConLoad){
+            
+            NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(addProgress) userInfo:nil repeats:YES];
+            self.timer  = timer;
+            self.isConLoad = YES;
+        }
+    }
+    
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    if (self.timer) {
+    
+    
+    if(self.timer){
+        
         [self.timer invalidate];
         self.timer = nil;
     }
-    self.progressView.progress = 1.0f;
-    self.progressView.hidden = YES;
+    
+       self.progressView.progress = 1.0;
+ 
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.progressView.hidden = YES;
+    });
+    
 
 }
 -(void) addProgress{
-    if (self.progressView.progress == 0.7f) {
-        [self.timer invalidate];
-        self.timer = nil;
+    if (self.progressView.progress >= 0.7f) {
+        if(self.timer){
+            
+            [self.timer invalidate];
+            self.timer = nil;
+        }
     }else {
-        self.progressView.progress += 0.05f;
+        NSLog(@"addProgress");
+        
+              
+              self.progressView.progress += 0.1f;
+        
     }
 }
 @end

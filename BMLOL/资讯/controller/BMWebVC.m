@@ -120,7 +120,7 @@ UIWebViewDelegate
 
     if ([[request.URL relativeString] hasPrefix:@"http://"]) {
         self.loadUrlString = [request.URL relativeString];
-  
+    
         
           [UIView animateWithDuration:1.f animations:^{
               self.progressView.progress = 0.3f;
@@ -134,7 +134,12 @@ UIWebViewDelegate
     if ([self.loadUrlString hasPrefix:@"http://"]){
         if(!self.isConLoad){
             
-            NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(addProgress) userInfo:nil repeats:YES];
+//             [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(addProgress) userInfo:nil repeats:YES];
+			//由于这里是webview是有滑动的，在滑动的时候 runlooph mode会发生改变，所以不用使用上面的这种方法
+			NSTimer *timer = [NSTimer timerWithTimeInterval:0.1f target:self selector:@selector(addProgress) userInfo:nil repeats:YES];
+			[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+			
+			
             self.timer  = timer;
             self.isConLoad = YES;
         }

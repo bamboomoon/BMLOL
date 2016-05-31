@@ -129,7 +129,7 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
 
 
         //刚刚进来时获取数据
-        [self getDataAndUpdateTableView:_firstUrlString withMJRefreshGifHeader:nil withMJRefreshBackNormalFooter:nil];
+        [self getDataAndUpdateTableView:firstUrlString withMJRefreshGifHeader:nil withMJRefreshBackNormalFooter:nil];
 
 
         }
@@ -190,6 +190,7 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
                 [header endRefreshing];  //刷新结束
             }else { //第一次创建
                 [self.dataArray addObject:contentModel]; //将每次获取到的数据到加载进来
+				NSLog(@"dataArray:%lu--%@",contentModel.listCellModelArray.count,self.dataArray);
             }
             
             [replaceSelf reloadData];
@@ -278,12 +279,18 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
 #pragma mark UITableViewDataSource
 
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+	
+	NSInteger cellNumber = 0;
+	for(BMSingleUrlContentModel *model in _dataArray){
+		cellNumber += model.listCellModelArray.count;
+	}
     if (_isHasScroll) {
-        return  _dataArray.count*20 + 2;
+//        NSLog(@"numbrer:%lu",cellNumber + 2 );
+        return  cellNumber + 2;
     }
-    return _dataArray.count*20 + 1;
+//    NSLog(@"numbrer:%lu",cellNumber + 1 );
+    return cellNumber + 1;
 }
 
 
@@ -378,14 +385,13 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
     if (_isHasScroll) {
         k = 2;
     }
-    
     //取__dataArray 中的第几个元素
     NSInteger j  = (indexPath.row - k ) / 20;
     BMSingleUrlContentModel *model = (BMSingleUrlContentModel *)_dataArray[j];
     //取 model 中的第几个 元素
     NSInteger i  = (indexPath.row - k ) % 20;
-    
-    //_contentModel.listCellModelArray[indexPath.row -k ]
+	
+	
     BMNesContentTableViewCell *cell = [BMNesContentTableViewCell newsContentTableViewCellWithContentModel:model.listCellModelArray[i] tableView:self];
     
     return cell;
@@ -441,7 +447,7 @@ static const CGFloat  lastPageImageMaringRight = 10.f;
     if(![article_url hasPrefix:@"http://"]){ //不是视频链接 拼接 url
         article_url = [newsUrlPath stringByAppendingString:article_url];
     }
-    NSLog(@"articel_rul:%@",article_url);
+//    NSLog(@"articel_rul:%@",article_url);
     //创建控制器
     BMWebVC *webVc = [[BMWebVC alloc] init];
     webVc.urlString = article_url;

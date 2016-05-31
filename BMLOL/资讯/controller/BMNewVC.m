@@ -319,13 +319,13 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     [contentSc addSubview:tableview];
     
 //  赛事
-    
+//    
     BMContentTableView *tableview1 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c73_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 1];
     tableview1.webVcDelegate = self;
     tableview1.frame = CGRectMake(screenWidth * 1,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview1];
 // 活动 //TODO: urlString 有问题
-    BMContentTableView *tableview2 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c12_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 2];
+    BMContentTableView *tableview2 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c23_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 2];
     tableview2.webVcDelegate = self;
     tableview2.frame = CGRectMake(screenWidth * 2,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview2];
@@ -339,7 +339,7 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     videoView.frame = CGRectMake(screenWidth * 3,0, screenWidth, screenHeight-64-44);
     [contentSc addSubview:videoView];
 
-//娱乐
+////娱乐
     BMContentTableView *tableview4 =  [[BMContentTableView alloc] initContentTableViewFirstUrlString:@"http://qt.qq.com/static/pages/news/phone/c18_list_1.shtml" isHasScroll:NO inScrollViewX:screenWidth * 4];
     tableview4.webVcDelegate = self;
     tableview4.frame = CGRectMake(screenWidth * 4,-44, screenWidth, screenHeight-64);
@@ -361,7 +361,7 @@ static const CGFloat BtnWidth =  40.0;  //按钮的宽度
     tableview7.frame = CGRectMake(screenWidth * 7,-44, screenWidth, screenHeight-64);
     [contentSc addSubview:tableview7];
     
-    
+	
 
 
 }

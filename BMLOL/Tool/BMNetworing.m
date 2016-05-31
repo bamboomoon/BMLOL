@@ -56,12 +56,15 @@
 
 +(void)BMNetworingWithUrlString:(NSString *)urlString commpleWithNSDictionary:(void (^)(NSDictionary *jsonData))commple{
     NSURLSession *getHeroList = [NSURLSession sharedSession];
-    NSURLSessionDataTask *data = [getHeroList dataTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURLSessionDataTask *data = [getHeroList dataTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error){
+		NSString *s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		
+		
+		
         if (!error) {
-            NSError *err;
-            NSDictionary * d  =   [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&err];
-            
-            
+			NSError *ee;
+            NSDictionary * d  =   [NSJSONSerialization JSONObjectWithData:[[self stringByRemovingControlCharacters:s] dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:&ee];
+			NSLog(@"eerr:%@",ee);
             commple(d);
         }else {
             NSLog(@"网络请求错误");
@@ -69,7 +72,22 @@
         
         
     }];
-    
     [data resume];
+}
+
+//去除字符串中未转义的字符
++(NSString *)stringByRemovingControlCharacters: (NSString *)inputString
+{
+	NSCharacterSet *controlChars = [NSCharacterSet controlCharacterSet];
+	NSRange range = [inputString rangeOfCharacterFromSet:controlChars];
+	if (range.location != NSNotFound) {
+		NSMutableString *mutable = [NSMutableString stringWithString:inputString];
+		while (range.location != NSNotFound) {
+			[mutable deleteCharactersInRange:range];
+			range = [mutable rangeOfCharacterFromSet:controlChars];
+		}
+		return mutable;
+	}
+	return inputString;
 }
 @end

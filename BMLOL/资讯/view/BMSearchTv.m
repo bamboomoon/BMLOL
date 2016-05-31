@@ -58,8 +58,8 @@
         }else{
             self.isShowAllRecord = NO;
         }
-        NSLog(@"findSearch:%@",[_searchRecordModel findSearch]);
-       
+//        NSLog(@"findSearch:%@",[_searchRecordModel findSearch]);
+		
         //1> 通过 urlString 异步获取数据 并转模型 刷新表格
         [BMNetworing BMNetworingWithUrlString:hotSearchUrlString commpleWithNSDictionary:^(NSDictionary *jsonData) {
             self.hotSearchTitle =  jsonData[@"title"];
@@ -318,7 +318,7 @@
         
      
         //通过 indexPath 获取到对应的 cell 上显示的 text并删除
-        NSLog(@"%@",[self cellForRowAtIndexPath:indexPath].textLabel.text);
+//        NSLog(@"%@",[self cellForRowAtIndexPath:indexPath].textLabel.text);
         [self.searchRecordModel deleteRecord:[self cellForRowAtIndexPath:indexPath].textLabel.text];
         self.searchRecordArray = [_searchRecordModel findSearch];
         [self reloadData];
@@ -334,11 +334,11 @@
 -(void) cleanRecordBtnClicked:(UIButton *) cleanBtn{
     
     if(self.isShowAllRecord){ //已经显示的是全部的搜索记录；所以这个按钮被点击时  应该清空全部的记录
-        NSLog(@"清空%d",[self.searchRecordModel cleanRecordTable]);
+//        NSLog(@"清空%d",[self.searchRecordModel cleanRecordTable]);
 
       
     }else{
-        NSLog(@"显示全部");
+//        NSLog(@"显示全部");
         self.isShowAllRecord = YES;
    
             [cleanBtn setTitle:@"清空全部记录" forState: UIControlStateNormal];

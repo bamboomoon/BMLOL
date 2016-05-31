@@ -17,6 +17,8 @@
 		4F29E8BB1CD8E74D00BB0128 /* BMSearchRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29E8BA1CD8E74D00BB0128 /* BMSearchRecordModel.m */; };
 		4F29E8BE1CD8FD4F00BB0128 /* BMSearchRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29E8BD1CD8FD4F00BB0128 /* BMSearchRecordCell.m */; };
 		4F3625681CACDF8300D91681 /* BMTopScrollButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3625671CACDF8300D91681 /* BMTopScrollButton.m */; };
+		4F494A9A1CE462E1002CA1CF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F494A991CE462E1002CA1CF /* AVFoundation.framework */; };
+		4F494AA11CE472FA002CA1CF /* L.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4F494AA01CE472FA002CA1CF /* L.mp4 */; };
 		4F5BDA151C9133C300020DB3 /* BMCustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5BDA141C9133C300020DB3 /* BMCustomTextField.m */; };
 		4F6920CA1CB697E40093079A /* NewsTop+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6920C71CB697E40093079A /* NewsTop+CoreDataProperties.m */; };
 		4F6920CB1CB697E40093079A /* NewsTop.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6920C91CB697E40093079A /* NewsTop.m */; };
@@ -38,6 +40,8 @@
 		4FDD08FD1C8C127800139EE6 /* BMLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDD08FC1C8C127800139EE6 /* BMLaunchViewController.m */; };
 		4FDD08FF1C8C6E5C00139EE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FDD08FE1C8C6E5C00139EE6 /* Assets.xcassets */; };
 		4FE1D7421CBD2D30006D1AF8 /* BMSingleUrlContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1D7411CBD2D30006D1AF8 /* BMSingleUrlContentModel.m */; };
+		4FEE8C9D1CE4AB890008054B /* BMVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE8C9C1CE4AB890008054B /* BMVideo.m */; };
+		4FEE8CA01CE4AC890008054B /* BMVideoTabVc.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE8C9F1CE4AC890008054B /* BMVideoTabVc.m */; };
 		4FFB2B711C7C4D2A00395FC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB2B701C7C4D2A00395FC3 /* main.m */; };
 		4FFB2B741C7C4D2A00395FC3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFB2B731C7C4D2A00395FC3 /* AppDelegate.m */; };
 		4FFB2B7A1C7C4D2A00395FC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FFB2B781C7C4D2A00395FC3 /* Main.storyboard */; };
@@ -77,6 +81,8 @@
 		4F29E8BD1CD8FD4F00BB0128 /* BMSearchRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMSearchRecordCell.m; sourceTree = "<group>"; };
 		4F3625661CACDF8300D91681 /* BMTopScrollButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMTopScrollButton.h; sourceTree = "<group>"; };
 		4F3625671CACDF8300D91681 /* BMTopScrollButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMTopScrollButton.m; sourceTree = "<group>"; };
+		4F494A991CE462E1002CA1CF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4F494AA01CE472FA002CA1CF /* L.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = L.mp4; sourceTree = "<group>"; };
 		4F5BDA131C9133C300020DB3 /* BMCustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMCustomTextField.h; sourceTree = "<group>"; };
 		4F5BDA141C9133C300020DB3 /* BMCustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMCustomTextField.m; sourceTree = "<group>"; };
 		4F6920C61CB697E40093079A /* NewsTop+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NewsTop+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -115,6 +121,10 @@
 		4FDD08FE1C8C6E5C00139EE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FE1D7401CBD2D30006D1AF8 /* BMSingleUrlContentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMSingleUrlContentModel.h; sourceTree = "<group>"; };
 		4FE1D7411CBD2D30006D1AF8 /* BMSingleUrlContentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMSingleUrlContentModel.m; sourceTree = "<group>"; };
+		4FEE8C9B1CE4AB890008054B /* BMVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMVideo.h; sourceTree = "<group>"; };
+		4FEE8C9C1CE4AB890008054B /* BMVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMVideo.m; sourceTree = "<group>"; };
+		4FEE8C9E1CE4AC890008054B /* BMVideoTabVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMVideoTabVc.h; sourceTree = "<group>"; };
+		4FEE8C9F1CE4AC890008054B /* BMVideoTabVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMVideoTabVc.m; sourceTree = "<group>"; };
 		4FFB2B6C1C7C4D2A00395FC3 /* BMLOL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BMLOL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FFB2B701C7C4D2A00395FC3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4FFB2B721C7C4D2A00395FC3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -137,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F494A9A1CE462E1002CA1CF /* AVFoundation.framework in Frameworks */,
 				4F29E8B81CD8E41400BB0128 /* libsqlite3.tbd in Frameworks */,
 				4F9E29841CB017D90042931F /* CoreData.framework in Frameworks */,
 				3D93D37112CA05797B2C21DD /* libPods.a in Frameworks */,
@@ -157,6 +168,7 @@
 		319A06FE6FC8D054320558F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F494A991CE462E1002CA1CF /* AVFoundation.framework */,
 				4F29E8B71CD8E41400BB0128 /* libsqlite3.tbd */,
 				4F9E29831CB017D90042931F /* CoreData.framework */,
 				4FDD08F51C8B5A5A00139EE6 /* Reveal.framework */,
@@ -260,6 +272,7 @@
 		4FFB2B6F1C7C4D2A00395FC3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4F494AA01CE472FA002CA1CF /* L.mp4 */,
 				4FFB2B701C7C4D2A00395FC3 /* main.m */,
 				4FCA3F3C1CD0745300D716D0 /* newsNavigationUrlString.plist */,
 			);
@@ -329,6 +342,10 @@
 		4FFB2B9A1C814A8F00395FC3 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				4FEE8C9B1CE4AB890008054B /* BMVideo.h */,
+				4FEE8C9C1CE4AB890008054B /* BMVideo.m */,
+				4FEE8C9E1CE4AC890008054B /* BMVideoTabVc.h */,
+				4FEE8C9F1CE4AC890008054B /* BMVideoTabVc.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -503,6 +520,7 @@
 		4FFB2B641C7C4D2A00395FC3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = donglei;
 				TargetAttributes = {
@@ -543,6 +561,7 @@
 				4FFB2B7F1C7C4D2A00395FC3 /* LaunchScreen.storyboard in Resources */,
 				4FDD08FF1C8C6E5C00139EE6 /* Assets.xcassets in Resources */,
 				4FCA3F3D1CD0745300D716D0 /* newsNavigationUrlString.plist in Resources */,
+				4F494AA11CE472FA002CA1CF /* L.mp4 in Resources */,
 				4FFB2B7A1C7C4D2A00395FC3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -619,6 +638,7 @@
 				4FE1D7421CBD2D30006D1AF8 /* BMSingleUrlContentModel.m in Sources */,
 				4F29E8A11CD34D9400BB0128 /* BMvideoBarBtnView.m in Sources */,
 				4F9E29821CB017800042931F /* Model.xcdatamodeld in Sources */,
+				4FEE8C9D1CE4AB890008054B /* BMVideo.m in Sources */,
 				4FD056FF1C8F1C6600286B4D /* BMOtherLoginVc.m in Sources */,
 				4FC442A21CCBA38E002087B0 /* BMScollView.m in Sources */,
 				4F29E8A41CD3D80C00BB0128 /* BMWebVC.m in Sources */,
@@ -632,6 +652,7 @@
 				4F3625681CACDF8300D91681 /* BMTopScrollButton.m in Sources */,
 				4FC442A51CCBA442002087B0 /* BMNewsLasetNewTbView.m in Sources */,
 				4F6920CE1CBA51CE0093079A /* BMContentTableView.m in Sources */,
+				4FEE8CA01CE4AC890008054B /* BMVideoTabVc.m in Sources */,
 				4FAA91ED1C9EEEC80043A2AF /* BMHeroListModel.m in Sources */,
 				4F6920D41CBA53EC0093079A /* BMNewsContentCellModel.m in Sources */,
 				4FD5BEB01CA8333C00B10EC2 /* BMNewVC.m in Sources */,
@@ -788,6 +809,7 @@
 			baseConfigurationReference = 1747FD30D6305A6C3CF244E4 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -800,6 +822,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cn.bamboomoon.BMLOL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -808,6 +832,7 @@
 			baseConfigurationReference = 26B4A7D993525BD567EEDC62 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -820,6 +845,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cn.bamboomoon.BMLOL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

@@ -126,7 +126,7 @@
         //获得第一响应
         [searchBar becomeFirstResponder];
         //数据置空
-        self.resultTableView.dataModelArray = nil;
+        [self.resultTableView.dataModelArray removeAllObjects];
         //显示搜索记录 table 隐藏搜索结果
         
         if (self.isShowResultTableViwe) {

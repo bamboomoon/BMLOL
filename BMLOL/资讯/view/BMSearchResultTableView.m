@@ -124,8 +124,12 @@
 
     __weak typeof(self) replaceSelf = self;
     
-    NSString *urlString = [NSString stringWithFormat:@"http://qt.qq.com/php_cgi/lol_mobile/iso/php/search_articles.php?keyword=%@&page=%ld&num=10&plat=ios&version=3",self.keyWord,(long)pageNumber];
-    NSLog(@"urlString%@",urlString);
+    
+    NSString *urlString = [[NSString stringWithFormat:@"http://qt.qq.com/php_cgi/lol_mobile/iso/php/search_articles.php?keyword=%@&page=%ld&num=10&plat=ios&version=3",self.keyWord,(long)pageNumber] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    
+   
+    NSLog(@"rulstring:%@",urlString);
     [BMNetworing BMNetworingWithUrlString:urlString commpleWithNSDictionary:^(NSDictionary *jsonData) {
         
         NSMutableArray *array = [NSMutableArray array];
@@ -134,11 +138,12 @@
         array = jsonData[@"list"];
       
         
-       
+        
         for (NSDictionary *dict in array) {
             BMNewsContentCellModel *cellModel = [BMNewsContentCellModel newsContentCellModelWithDict:dict];
             [middleArray addObject:cellModel];
         }
+    
         if (header) { //下拉刷新数据
             if (replaceSelf.dataModelArray) {
                 
@@ -172,8 +177,10 @@
             });
             
         }else {
-            
-            [replaceSelf.dataModelArray addObject:middleArray];
+            if (middleArray.count > 0 ) {
+                
+                [replaceSelf.dataModelArray addObject:middleArray];
+            }
             
             
             //在主线程中刷新表格

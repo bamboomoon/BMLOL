@@ -101,7 +101,7 @@
 -(void) visitorBtnClick:(UIButton *)btn{
     
     UITabBarController *tab = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"customTabBar"];
-    NSLog(@"tab%@",tab);
+//    NSLog(@"tab%@",tab);
 //    UIWindow *w  = [[UIWindow alloc] init];
 //    w.rootViewController = tab;
 //    w.windowLevel= UIWindowLevelAlert;
